@@ -34,6 +34,61 @@ project(Zero CXX)
 #    message(FATAL_ERROR "no other platforms are currently supported besides windows. Current Sys: ${CMAKE_SYSTEM_NAME}")
 #endif()
 
+
+################################################################################
+# Set up options for projects depending on various ZeroCore features.
+################################################################################
+
+# Set up option sets, these will then set base options, these will all default
+# to off.
+
+# If you only want to link against Zilch and the ZilchShader extension this
+# option is for you.
+option(ZERO_OPTIONSET_ZilchShader "The ZilchShaders option set, will turn on everything required for ZilchShaders" OFF)
+
+if(${ZERO_BUILD_ZilchShader})
+    option(ZERO_BUILD_ZilchShaders "Build the ZilchShaders project" ON)
+    option(ZERO_OPTIONSET_Zilch "Build the Zilch project" ON)
+endif()
+
+# If you only want to link against Zilch this option is for you.
+option(ZERO_OPTIONSET_Zilch "The Zilch option set, will turn on everything required for Zilch" OFF)
+
+if(${ZERO_BUILD_Zilch})
+    option(ZERO_BUILD_Zilch "Build the Zilch project" ON)
+endif()
+
+##############################
+# Base options.
+##############################
+#####################
+# ZeroLibraries
+#####################
+option(ZERO_BUILD_Common "Build the Common project" ON)
+option(ZERO_BUILD_Dash "Build the Dash project" ON)
+option(ZERO_BUILD_Geometry "Build the Geometry project" ON)
+option(ZERO_BUILD_Meta "Build the Meta project" ON)
+option(ZERO_BUILD_Platform "Build the Platform project" ON)
+option(ZERO_BUILD_Serialization "Build the Serialization project" ON)
+option(ZERO_BUILD_SpatialPartition "Build the SpatialPartition project" ON)
+option(ZERO_BUILD_Support "Build the Support project" ON)
+option(ZERO_BUILD_Zilch "Build the Zilch project" ON)
+
+#####################
+# External
+#####################
+
+
+#####################
+# Extensions
+#####################
+option(ZERO_BUILD_CodeTranslator "Build the CodeTranslator project" ON)
+option(ZERO_BUILD_Editor "Build the Editor project" ON)
+option(ZERO_BUILD_Gameplay "Build the Gameplay project" ON)
+option(ZERO_BUILD_UiWidget "Build the UiWidget project" ON)
+option(ZERO_BUILD_Widget "Build the Widget project" ON)
+option(ZERO_BUILD_ZilchShaders "Build the ZilchShaders project" ON)
+
 ################################################################################
 # Set up global variables
 ################################################################################
