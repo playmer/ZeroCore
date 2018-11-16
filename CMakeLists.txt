@@ -49,6 +49,7 @@ option(ZERO_OPTIONSET_ZilchShader "The ZilchShaders option set, will turn on eve
 if(${ZERO_BUILD_ZilchShader})
     option(ZERO_BUILD_ZilchShaders "Build the ZilchShaders project" ON)
     option(ZERO_OPTIONSET_Zilch "Build the Zilch project" ON)
+    option(ZERO_BUILD_Geometry "Build the Geometry project" ON)
 endif()
 
 # If you only want to link against Zilch this option is for you.
@@ -56,6 +57,7 @@ option(ZERO_OPTIONSET_Zilch "The Zilch option set, will turn on everything requi
 
 if(${ZERO_BUILD_Zilch})
     option(ZERO_BUILD_Zilch "Build the Zilch project" ON)
+    option(ZERO_BUILD_Common "Build the Common project" ON)
 endif()
 
 ##############################
@@ -77,7 +79,6 @@ option(ZERO_BUILD_Zilch "Build the Zilch project" ON)
 #####################
 # External
 #####################
-
 
 #####################
 # Extensions

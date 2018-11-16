@@ -28,8 +28,11 @@ endif()
 ################################################################################
 if(${ZERO_BUILD_CodeTranslator})
     add_library(CodeTranslator "")
+
     set_target_properties(CodeTranslator PROPERTIES FOLDER "Extensions")
+
     include(CodeTranslator/CMakeLists.txt)
+
     target_include_directories(CodeTranslator 
         PUBLIC 
             ${CurrentDirectory}
@@ -49,8 +52,11 @@ endif()
 ################################################################################
 if(${ZERO_BUILD_Editor})
     add_library(Editor "")
-    set_target_properties(Editor         PROPERTIES FOLDER "Extensions")
+
+    set_target_properties(Editor PROPERTIES FOLDER "Extensions")
+
     include(Editor/CMakeLists.txt)
+
     target_include_directories(Editor 
         PUBLIC 
             ${CurrentDirectory}/../ZeroLibraries/Zilch/Project    
@@ -74,8 +80,11 @@ endif()
 ################################################################################
 if(${ZERO_BUILD_Gameplay})
     add_library(Gameplay "")
-    set_target_properties(Gameplay       PROPERTIES FOLDER "Extensions")
+
+    set_target_properties(Gameplay PROPERTIES FOLDER "Extensions")
+
     include(Gameplay/CMakeLists.txt)
+
     target_include_directories(Gameplay
         PUBLIC 
             ${CurrentDirectory}
@@ -99,8 +108,11 @@ endif()
 ################################################################################
 if(${ZERO_BUILD_UiWidget})
     add_library(UiWidget "")
-    set_target_properties(UiWidget       PROPERTIES FOLDER "Extensions")
+
+    set_target_properties(UiWidget PROPERTIES FOLDER "Extensions")
+
     include(UiWidget/CMakeLists.txt)
+
     target_include_directories(UiWidget 
         PUBLIC 
             ${CurrentDirectory}
@@ -120,13 +132,17 @@ endif()
 ################################################################################
 if(${ZERO_BUILD_Widget})
     add_library(Widget "")
-    set_target_properties(Widget         PROPERTIES FOLDER "Extensions")
+
+    set_target_properties(Widget PROPERTIES FOLDER "Extensions")
+    
     include(Widget/CMakeLists.txt)
+
     target_include_directories(Widget
         PUBLIC 
             ${CurrentDirectory}
 
     )
+
     target_link_libraries(Widget
                         PUBLIC
                         Engine
@@ -140,8 +156,11 @@ endif()
 ################################################################################
 if(${ZERO_BUILD_ZilchShaders})
     add_library(ZilchShaders "")
-    set_target_properties(ZilchShaders   PROPERTIES FOLDER "Extensions")
+
+    set_target_properties(ZilchShaders PROPERTIES FOLDER "Extensions")
+
     include(ZilchShaders/CMakeLists.txt)
+
     target_include_directories(ZilchShaders
         PUBLIC 
             ${CurrentDirectory}
@@ -155,6 +174,7 @@ if(${ZERO_BUILD_ZilchShaders})
             ${CurrentDirectory}/SpirV/SpirVFiles/tools
             ${CurrentDirectory}/SpirV/SpirVFiles/source
     )
+
     target_link_libraries(ZilchShaders
                         PRIVATE
                         Common
