@@ -14,6 +14,15 @@ endif()
 
 add_subdirectory(SpirV)
 
+if (NOT ${ZERO_BUILD_CodeTranslator} AND
+    NOT ${ZERO_BUILD_Editor} AND
+    NOT ${ZERO_BUILD_Gameplay} AND
+    NOT ${ZERO_BUILD_UiWidget} AND
+    NOT ${ZERO_BUILD_Widget} AND
+    NOT ${ZERO_BUILD_ZilchShaders})
+    set(ZERO_NO_EXTENSIONS ON)
+endif()
+
 ################################################################################
 # CodeTranslator
 ################################################################################
@@ -158,116 +167,120 @@ if(${ZERO_BUILD_ZilchShaders})
     set(Zero_OptionalTarget_ZilchShaders ZilchShaders)
 endif()
 
-################################################################################
-# set the output directories for all of our targets
-################################################################################
-zero_multitarget_output_directories(${Zero_OptionalTarget_CodeTranslator}
-                      ${Zero_OptionalTarget_Editor}
-                      ${Zero_OptionalTarget_Gameplay} 
-                      ${Zero_OptionalTarget_UiWidget} 
-                      ${Zero_OptionalTarget_Widget}
-                      ${Zero_OptionalTarget_ZilchShaders}
-                      LIBRARY_DIRECTORY ${zero_library_dir}
-                      RUNTIME_DIRECTORY ${zero_binary_dir}
-)
 
-################################################################################
-# Specify any additional target options such as pdb locations
-################################################################################
-if (${CMAKE_CXX_COMPILER_ID} STREQUAL MSVC OR (CMAKE_GENERATOR_TOOLSET STREQUAL "LLVM-vs2014"))
-    zero_multitarget_output_settings(
-        ${Zero_OptionalTarget_CodeTranslator}
-        Editor
-        Gameplay 
-        UiWidget 
-        Widget
-        ZilchShaders
-        CONFIGS ${supported_configs}
-        BASEPATH ${zero_build_out}
-        PLATFORM ${platform}
-        CONFIG ${configuration}
-        BITS ${bit}
-        TOOLSET ${CMAKE_VS_PLATFORM_TOOLSET}
-        PRECOMPILED_HEADER_NAME "Precompiled.hpp"
-        PRECOMPILED_SOURCE_NAME "Precompiled.cpp"
-        TARGET_SUBFOLDER
+# We might have no extensions on, so don't try setting any of this.
+if (${ZERO_NO_EXTENSIONS})
+    ################################################################################
+    # set the output directories for all of our targets
+    ################################################################################
+    zero_multitarget_output_directories(${Zero_OptionalTarget_CodeTranslator}
+                        ${Zero_OptionalTarget_Editor}
+                        ${Zero_OptionalTarget_Gameplay} 
+                        ${Zero_OptionalTarget_UiWidget} 
+                        ${Zero_OptionalTarget_Widget}
+                        ${Zero_OptionalTarget_ZilchShaders}
+                        LIBRARY_DIRECTORY ${zero_library_dir}
+                        RUNTIME_DIRECTORY ${zero_binary_dir}
     )
-endif()
 
-################################################################################
-# set flags and definitions
-################################################################################
-if (${CMAKE_CXX_COMPILER_ID} STREQUAL MSVC OR (CMAKE_GENERATOR_TOOLSET STREQUAL "LLVM-vs2014"))
-    zero_multitarget_compile_options(  
-        ${Zero_OptionalTarget_CodeTranslator}
-        ${Zero_OptionalTarget_Editor}
-        ${Zero_OptionalTarget_Gameplay}
-        ${Zero_OptionalTarget_UiWidget}
-        ${Zero_OptionalTarget_Widget}
-        ${Zero_OptionalTarget_ZilchShaders}
-        PRIVATE 
-        PUBLIC
-            -GS -analyze-  -Zc:wchar_t
-        PRIVATE
-            -W3
-            -wd"4302" 
-            -wd"4305"
-            -Gd
-            -EHsc
-            -Gm
-            -GR-
-            -fp:fast 
-            -Zc:forScope 
-            -Oy-
-            -Od
-            -Zc:inline
-            -MDd
-            -nologo
-            -WX
-            ${SpirVToolsCompileOptions}
+    ################################################################################
+    # Specify any additional target options such as pdb locations
+    ################################################################################
+    if (${CMAKE_CXX_COMPILER_ID} STREQUAL MSVC OR (CMAKE_GENERATOR_TOOLSET STREQUAL "LLVM-vs2014"))
+        zero_multitarget_output_settings(
+            ${Zero_OptionalTarget_CodeTranslator}
+            Editor
+            Gameplay 
+            UiWidget 
+            Widget
+            ZilchShaders
+            CONFIGS ${supported_configs}
+            BASEPATH ${zero_build_out}
+            PLATFORM ${platform}
+            CONFIG ${configuration}
+            BITS ${bit}
+            TOOLSET ${CMAKE_VS_PLATFORM_TOOLSET}
+            PRECOMPILED_HEADER_NAME "Precompiled.hpp"
+            PRECOMPILED_SOURCE_NAME "Precompiled.cpp"
+            TARGET_SUBFOLDER
+        )
+    endif()
+
+    ################################################################################
+    # set flags and definitions
+    ################################################################################
+    if (${CMAKE_CXX_COMPILER_ID} STREQUAL MSVC OR (CMAKE_GENERATOR_TOOLSET STREQUAL "LLVM-vs2014"))
+        zero_multitarget_compile_options(  
+            ${Zero_OptionalTarget_CodeTranslator}
+            ${Zero_OptionalTarget_Editor}
+            ${Zero_OptionalTarget_Gameplay}
+            ${Zero_OptionalTarget_UiWidget}
+            ${Zero_OptionalTarget_Widget}
+            ${Zero_OptionalTarget_ZilchShaders}
+            PRIVATE 
+            PUBLIC
+                -GS -analyze-  -Zc:wchar_t
+            PRIVATE
+                -W3
+                -wd"4302" 
+                -wd"4305"
+                -Gd
+                -EHsc
+                -Gm
+                -GR-
+                -fp:fast 
+                -Zc:forScope 
+                -Oy-
+                -Od
+                -Zc:inline
+                -MDd
+                -nologo
+                -WX
+                ${SpirVToolsCompileOptions}
+                ${common_flags}
+        )
+    else()
+        zero_multitarget_compile_options(
+            ${Zero_OptionalTarget_CodeTranslator}
+            ${Zero_OptionalTarget_Editor}
+            ${Zero_OptionalTarget_Gameplay}
+            ${Zero_OptionalTarget_UiWidget}
+            ${Zero_OptionalTarget_Widget}
+            ${Zero_OptionalTarget_ZilchShaders}
+            PRIVATE
+            PUBLIC
+            PRIVATE
             ${common_flags}
-    )
-else()
-    zero_multitarget_compile_options(
-        ${Zero_OptionalTarget_CodeTranslator}
-        ${Zero_OptionalTarget_Editor}
-        ${Zero_OptionalTarget_Gameplay}
-        ${Zero_OptionalTarget_UiWidget}
-        ${Zero_OptionalTarget_Widget}
-        ${Zero_OptionalTarget_ZilchShaders}
-        PRIVATE
-        PUBLIC
-        PRIVATE
-        ${common_flags}
-    )
-    set_target_properties(
-        ${Zero_OptionalTarget_CodeTranslator}
-        ${Zero_OptionalTarget_Editor}
-        ${Zero_OptionalTarget_Gameplay}
-        ${Zero_OptionalTarget_UiWidget}
-        ${Zero_OptionalTarget_Widget}
-        ${Zero_OptionalTarget_ZilchShaders}
-        PROPERTIES
-        LINK_FLAGS ${common_linker_flags}
-    )
-endif()
+        )
+        set_target_properties(
+            ${Zero_OptionalTarget_CodeTranslator}
+            ${Zero_OptionalTarget_Editor}
+            ${Zero_OptionalTarget_Gameplay}
+            ${Zero_OptionalTarget_UiWidget}
+            ${Zero_OptionalTarget_Widget}
+            ${Zero_OptionalTarget_ZilchShaders}
+            PROPERTIES
+            LINK_FLAGS ${common_linker_flags}
+        )
+    endif()
 
-################################################################################
-# Set linker flags
-################################################################################
-if (${CMAKE_CXX_COMPILER_ID} STREQUAL MSVC OR (CMAKE_GENERATOR_TOOLSET STREQUAL "LLVM-vs2014"))
-    # set the correct subsystems for executable targets, and set stack size for the editor
-    set_target_properties(
-        ${Zero_OptionalTarget_CodeTranslator}
-        ${Zero_OptionalTarget_Editor}
-        ${Zero_OptionalTarget_Gameplay}
-        ${Zero_OptionalTarget_UiWidget}
-        ${Zero_OptionalTarget_Widget}
-        ${Zero_OptionalTarget_ZilchShaders}
-        PROPERTIES 
-        STATIC_LIBRARY_FLAGS "${common_library_flags}"
-        STATIC_LIBRARY_FLAGS_RELEASE "/LTCG"
-    )
+    ################################################################################
+    # Set linker flags
+    ################################################################################
+    if (${CMAKE_CXX_COMPILER_ID} STREQUAL MSVC OR (CMAKE_GENERATOR_TOOLSET STREQUAL "LLVM-vs2014"))
+        # set the correct subsystems for executable targets, and set stack size for the editor
+        set_target_properties(
+            ${Zero_OptionalTarget_CodeTranslator}
+            ${Zero_OptionalTarget_Editor}
+            ${Zero_OptionalTarget_Gameplay}
+            ${Zero_OptionalTarget_UiWidget}
+            ${Zero_OptionalTarget_Widget}
+            ${Zero_OptionalTarget_ZilchShaders}
+            PROPERTIES 
+            STATIC_LIBRARY_FLAGS "${common_library_flags}"
+            STATIC_LIBRARY_FLAGS_RELEASE "/LTCG"
+        )
+    endif()
 endif()
 
 ################################################################################
