@@ -39,6 +39,44 @@ project(Zero CXX)
 # Set up options for projects depending on various ZeroCore features.
 ################################################################################
 
+# Helper for Option sets, this will turn any builds not turned on by the option
+# sets off.
+function(zero_turn_remaining_builds_off)
+    # ZeroLibraries
+    option(ZERO_BUILD_Common "Build the Common project" OFF)
+    option(ZERO_BUILD_Dash "Build the Dash project" OFF)
+    option(ZERO_BUILD_Geometry "Build the Geometry project" OFF)
+    option(ZERO_BUILD_Meta "Build the Meta project" OFF)
+    option(ZERO_BUILD_Platform "Build the Platform project" OFF)
+    option(ZERO_BUILD_Serialization "Build the Serialization project" OFF)
+    option(ZERO_BUILD_SpatialPartition "Build the SpatialPartition project" OFF)
+    option(ZERO_BUILD_Support "Build the Support project" OFF)
+    option(ZERO_BUILD_Zilch "Build the Zilch project" OFF)
+
+    # External
+
+    # Systems
+    option(ZERO_BUILD_Content "Build the Content project" OFF}
+    option(ZERO_BUILD_Engine "Build the Engine project" OFF}
+    option(ZERO_BUILD_Graphics "Build the Graphics project" OFF}
+    option(ZERO_BUILD_Networking "Build the Networking project" OFF}
+    option(ZERO_BUILD_Physics "Build the Physics project" OFF}
+    option(ZERO_BUILD_Sound "Build the Sound project" OFF}
+    option(ZERO_BUILD_Startup "Build the Startup project" OFF}
+    option(ZERO_BUILD_ZilchScript "Build the ZilchScript project" OFF}
+
+    # Extensions
+    option(ZERO_BUILD_CodeTranslator "Build the CodeTranslator project" OFF)
+    option(ZERO_BUILD_Editor "Build the Editor project" OFF)
+    option(ZERO_BUILD_Gameplay "Build the Gameplay project" OFF)
+    option(ZERO_BUILD_UiWidget "Build the UiWidget project" OFF)
+    option(ZERO_BUILD_Widget "Build the Widget project" OFF)
+    option(ZERO_BUILD_ZilchShaders "Build the ZilchShaders project" OFF)
+endfunction()
+
+###################################
+# Option Sets, these default off.
+###################################
 # Set up option sets, these will then set base options, these will all default
 # to off. If you select any option sets, we default to turning all other
 # projects off and only turning on what's required for your selected option
@@ -52,7 +90,7 @@ project(Zero CXX)
 # option is for you.
 option(ZERO_OPTIONSET_ZilchShader "The ZilchShaders option set, will turn on everything required for ZilchShaders" OFF)
 
-if(${ZERO_BUILD_ZilchShader})
+if(${ZERO_OPTIONSET_ZilchShader})
     option(ZERO_OPTIONSET_Zilch "Build the Zilch Option Set" ON)
     option(ZERO_BUILD_Geometry "Build the Geometry project" ON)
     option(ZERO_BUILD_ZilchShaders "Build the ZilchShaders project" ON)
@@ -61,14 +99,22 @@ endif()
 # If you only want to link against Zilch this option is for you.
 option(ZERO_OPTIONSET_Zilch "The Zilch option set, will turn on everything required for Zilch" OFF)
 
-if(${ZERO_BUILD_Zilch})
+if(${ZERO_OPTIONSET_Zilch})
     option(ZERO_BUILD_Common "Build the Common project" ON)
     option(ZERO_BUILD_Zilch "Build the Zilch project" ON)
 endif()
 
-##############################
-# Base options.
-##############################
+# Options are weird, and the first option set in the cmake hierarchy goes first
+# so if any of our optionsets are set, then we want to turn off any extra
+# builds/dependencies.
+if(${ZERO_OPTIONSET_Zilch} OR
+   ${ZERO_OPTIONSET_ZilchShader})
+   zero_turn_remaining_builds_off()
+endif()
+
+###################################
+# Base options, these default on.
+###################################
 #####################
 # ZeroLibraries
 #####################
@@ -89,6 +135,14 @@ option(ZERO_BUILD_Zilch "Build the Zilch project" ON)
 #####################
 # Systems
 #####################
+option(ZERO_BUILD_Content "Build the Content project" ON}
+option(ZERO_BUILD_Engine "Build the Engine project" ON}
+option(ZERO_BUILD_Graphics "Build the Graphics project" ON}
+option(ZERO_BUILD_Networking "Build the Networking project" ON}
+option(ZERO_BUILD_Physics "Build the Physics project" ON}
+option(ZERO_BUILD_Sound "Build the Sound project" ON}
+option(ZERO_BUILD_Startup "Build the Startup project" ON}
+option(ZERO_BUILD_ZilchScript "Build the ZilchScript project" ON}
 
 #####################
 # Extensions
