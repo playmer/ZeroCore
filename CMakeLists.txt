@@ -40,24 +40,30 @@ project(Zero CXX)
 ################################################################################
 
 # Set up option sets, these will then set base options, these will all default
-# to off.
+# to off. If you select any option sets, we default to turning all other
+# projects off and only turning on what's required for your selected option
+# set. 
+#
+# NOTE: Keep in mind that if you change options without regenerating the build
+# folder in it's entirety, you might not see your requested changes until
+# after you do.
 
 # If you only want to link against Zilch and the ZilchShader extension this
 # option is for you.
 option(ZERO_OPTIONSET_ZilchShader "The ZilchShaders option set, will turn on everything required for ZilchShaders" OFF)
 
 if(${ZERO_BUILD_ZilchShader})
-    option(ZERO_BUILD_ZilchShaders "Build the ZilchShaders project" ON)
-    option(ZERO_OPTIONSET_Zilch "Build the Zilch project" ON)
+    option(ZERO_OPTIONSET_Zilch "Build the Zilch Option Set" ON)
     option(ZERO_BUILD_Geometry "Build the Geometry project" ON)
+    option(ZERO_BUILD_ZilchShaders "Build the ZilchShaders project" ON)
 endif()
 
 # If you only want to link against Zilch this option is for you.
 option(ZERO_OPTIONSET_Zilch "The Zilch option set, will turn on everything required for Zilch" OFF)
 
 if(${ZERO_BUILD_Zilch})
-    option(ZERO_BUILD_Zilch "Build the Zilch project" ON)
     option(ZERO_BUILD_Common "Build the Common project" ON)
+    option(ZERO_BUILD_Zilch "Build the Zilch project" ON)
 endif()
 
 ##############################
@@ -78,6 +84,10 @@ option(ZERO_BUILD_Zilch "Build the Zilch project" ON)
 
 #####################
 # External
+#####################
+
+#####################
+# Systems
 #####################
 
 #####################
