@@ -2,8 +2,6 @@
 # Author: Joshua Shlemmer
 # Copyright 2017, DigiPen Institute of Technology
 ################################################################################
-set(ExtensionsDirectory ${CMAKE_CURRENT_LIST_DIR})
-
 if(use_spirv_shared_library)
   set(SpirVToolsCompileOptions -DSPIRV_TOOLS_SHAREDLIB)
 endif()

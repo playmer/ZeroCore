@@ -101,16 +101,16 @@ target_sources(ZilchShaders
 
 target_include_directories(ZilchShaders
 PUBLIC 
-    ${CurrentDirectory}
-    ${CurrentDirectory}/SpirV/SPIRV-Cross
-    ${CurrentDirectory}/SpirV/SpirVFiles
-    ${CurrentDirectory}/SpirV/SpirVFiles/external
-    ${CurrentDirectory}/SpirV/SpirVFiles/external/SPIRV-Headers/include
-    ${CurrentDirectory}/SpirV/SpirVFiles/include
-    ${CurrentDirectory}/SpirV/SpirVFiles/include/spirv-tools
-    ${CurrentDirectory}/SpirV/SpirVFiles/build
-    ${CurrentDirectory}/SpirV/SpirVFiles/tools
-    ${CurrentDirectory}/SpirV/SpirVFiles/source
+    ${CMAKE_CURRENT_LIST_DIR}/../
+    ${CMAKE_CURRENT_LIST_DIR}/../SpirV/SPIRV-Cross
+    ${CMAKE_CURRENT_LIST_DIR}/../SpirV/SpirVFiles
+    ${CMAKE_CURRENT_LIST_DIR}/../SpirV/SpirVFiles/external
+    ${CMAKE_CURRENT_LIST_DIR}/../SpirV/SpirVFiles/external/SPIRV-Headers/include
+    ${CMAKE_CURRENT_LIST_DIR}/../SpirV/SpirVFiles/include
+    ${CMAKE_CURRENT_LIST_DIR}/../SpirV/SpirVFiles/include/spirv-tools
+    ${CMAKE_CURRENT_LIST_DIR}/../SpirV/SpirVFiles/build
+    ${CMAKE_CURRENT_LIST_DIR}/../SpirV/SpirVFiles/tools
+    ${CMAKE_CURRENT_LIST_DIR}/../SpirV/SpirVFiles/source
 )
 
 target_link_libraries(ZilchShaders
