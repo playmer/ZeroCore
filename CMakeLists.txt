@@ -154,6 +154,13 @@ option(ZERO_BUILD_UiWidget "Build the UiWidget project" ON)
 option(ZERO_BUILD_Widget "Build the Widget project" ON)
 option(ZERO_BUILD_ZilchShaders "Build the ZilchShaders project" ON)
 
+#####################
+# Projects
+#####################
+option(ZERO_BUILD_ZeroEditor "Build the ZeroEditor project" ON)
+option(ZERO_BUILD_ZeroLauncher "Build the ZeroLauncher project" ON)
+option(ZERO_BUILD_ZeroLauncherSharedLibrary "Build the ZeroLauncherSharedLibrary project" ON)
+option(ZERO_BUILD_BrowserSubProcess "Build the BrowserSubProcess project" ON)
 ################################################################################
 # Set up global variables
 ################################################################################
@@ -235,5 +242,6 @@ if (generate_with_unit_tests)
     endif()
 endif()
 
-set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT ZeroEditor) 
-
+if (ZERO_BUILD_ZeroEditor)
+    set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT ZeroEditor)
+endif()

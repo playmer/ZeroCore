@@ -22,6 +22,11 @@ function(zero_multitarget_compile_options)
 
     set(PARSED_TARGETS ${PARSED_UNPARSED_ARGUMENTS})
 
+    # because of the way option sets were implemented, we must handle the no targets case
+    if (PARSED_TARGETS STREQUAL "")
+        return()
+    endif()
+
     foreach(target ${PARSED_TARGETS})
         foreach(option ${multiValueArgs})
             target_compile_options(${target} ${option} ${PARSED_${option}})
@@ -44,6 +49,11 @@ function(zero_multitarget_output_settings)
 
 
     set(PARSED_TARGETS ${PARSED_UNPARSED_ARGUMENTS})
+
+    # because of the way option sets were implemented, we must handle the no targets case
+    if (PARSED_TARGETS STREQUAL "")
+        return()
+    endif()
 
     foreach(target ${PARSED_TARGETS})
         # if we were passed a config, seperate our intermediate files by config instead of platform
@@ -79,6 +89,12 @@ function(zero_multitarget_output_directories)
     cmake_parse_arguments(PARSED "" "${oneValueArgs}" "${multiValueArgs}" ${ARGN})
 
     set(PARSED_TARGETS ${PARSED_UNPARSED_ARGUMENTS})
+
+    # because of the way option sets were implemented, we must handle the no targets case
+    if (PARSED_TARGETS STREQUAL "")
+        return()
+    endif()
+
     foreach(target ${PARSED_TARGETS})
         set_target_properties(${target}
                               PROPERTIES
@@ -98,6 +114,11 @@ function(zero_multitarget_copy_folders_to_target_output_directories)
     cmake_parse_arguments(PARSED "" "${oneValueArgs}" "${multiValueArgs}" ${ARGN})
 
     set(PARSED_TARGETS ${PARSED_UNPARSED_ARGUMENTS})
+
+    # because of the way option sets were implemented, we must handle the no targets case
+    if (PARSED_TARGETS STREQUAL "")
+        return()
+    endif()
 
     foreach(target ${PARSED_TARGETS})
         foreach(folder ${PARSED_FOLDERS_TO_COPY})
@@ -125,6 +146,11 @@ function(multitarget_zip_directory)
     cmake_parse_arguments(PARSED "" "${oneValueArgs}" "${multiValueArgs}" ${ARGN})
 
     set(PARSED_TARGETS ${PARSED_UNPARSED_ARGUMENTS})
+
+    # because of the way option sets were implemented, we must handle the no targets case
+    if (PARSED_TARGETS STREQUAL "")
+        return()
+    endif()
 
     # assign this zip directory command to each target that was passsed
     foreach(target ${PARSED_TARGETS})

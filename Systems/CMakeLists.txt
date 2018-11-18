@@ -2,8 +2,6 @@
 # Author: Joshua Shlemmer
 # Copyright 2017, DigiPen Institute of Technology
 ################################################################################
-# get our current directory
-set(SystemsDirectory ${CMAKE_CURRENT_LIST_DIR})
 
 if(NOT ${ZERO_BUILD_Content} AND
    NOT ${ZERO_BUILD_Engine} AND
@@ -14,7 +12,10 @@ if(NOT ${ZERO_BUILD_Content} AND
    NOT ${ZERO_BUILD_Startup} AND
    NOT ${ZERO_BUILD_ZilchScript})
    set(ZERO_NO_SYSTEMS ON)
+else()
+    set(ZERO_NO_SYSTEMS OFF)
 endif()
+
 
 
 ################################################################################
@@ -90,7 +91,7 @@ if(${ZERO_BUILD_ZilchScript})
     set(Zero_OptionalTarget_ZilchScript ZilchScript)
 endif()
 
-if(${ZERO_NO_SYSTEMS})
+if(NOT ${ZERO_NO_SYSTEMS})
     ################################################################################
     # set the output directories for all of our targets
     ################################################################################
