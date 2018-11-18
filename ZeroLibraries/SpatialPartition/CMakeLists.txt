@@ -2,6 +2,10 @@
 # Generated using Joshua T. Fisher's 'CMake Builder'.
 # Link: https://github.com/playmer/CmakeBuilder 
 ################################################################################
+add_library(SpatialPartition  "")
+
+set_target_properties(SpatialPartition PROPERTIES FOLDER "ZeroLibraries")
+
 target_sources(SpatialPartition
   PRIVATE
     ${CMAKE_CURRENT_LIST_DIR}/AvlDynamicAabbTreeBroadPhase.cpp
@@ -60,4 +64,15 @@ target_sources(SpatialPartition
     ${CMAKE_CURRENT_LIST_DIR}/StaticAabbTree.hpp
     ${CMAKE_CURRENT_LIST_DIR}/StaticAabbTree.inl
     ${CMAKE_CURRENT_LIST_DIR}/StaticAabbTreeBroadPhase.hpp
+)
+
+target_include_directories(SpatialPartition
+PUBLIC
+    ${CurrentDirectory}/SpatialPartition 
+    ${CurrentDirectory}
+)
+
+target_link_libraries(SpatialPartition
+                    PUBLIC
+                    Zilch
 )

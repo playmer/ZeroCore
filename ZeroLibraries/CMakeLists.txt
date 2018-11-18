@@ -24,18 +24,8 @@ endif()
 # Common
 ################################################################################
 if (${ZERO_BUILD_Common})
-    add_library(Common "") 
+    add_subdirectory(Common)
 
-    set_target_properties(Common PROPERTIES FOLDER "ZeroLibraries")
-
-    include(Common/CMakeLists.txt)
-
-    target_include_directories(Common
-        PUBLIC 
-            ${CurrentDirectory}/Common
-            ${CurrentDirectory}
-    )
-    
     set(Zero_OptionalTarget_Common Common)
 endif()
 
@@ -51,24 +41,7 @@ endif()
 # Dash
 ################################################################################
 if (${ZERO_BUILD_Dash})
-    add_library(Dash "")
-
-    set_target_properties(Dash PROPERTIES FOLDER "ZeroLibraries")
-
-    include(Dash/CMakeLists.txt)
-
-    target_include_directories(Dash
-    PUBLIC
-        ${CurrentDirectory}/Dash 
-        ${CurrentDirectory}
-    )
-
-    target_link_libraries(Dash
-                        PUBLIC
-                        Common
-                        Zilch                      
-                        Geometry
-    ) 
+    add_subdirectory(Dash)
     
     set(Zero_OptionalTarget_Dash Dash)
 endif()
@@ -77,24 +50,8 @@ endif()
 # Geometry
 ################################################################################
 if (${ZERO_BUILD_Geometry})
-    add_library(Geometry "")
+    add_subdirectory(Geometry)
 
-    set_target_properties(Geometry PROPERTIES FOLDER "ZeroLibraries")
-
-    include(Geometry/CMakeLists.txt)
-
-    target_include_directories(Geometry
-    PUBLIC
-        ${CurrentDirectory}/Geometry 
-        ${CurrentDirectory}
-    )
-
-    target_link_libraries(Geometry
-                        PUBLIC
-                        Common
-                        Zilch
-    ) 
-    
     set(Zero_OptionalTarget_Geometry Geometry)
 endif()
 
@@ -102,26 +59,8 @@ endif()
 # Zilch
 ################################################################################
 if (${ZERO_BUILD_Zilch})
-    add_library(Zilch "")
+    add_subdirectory(Zilch)
 
-    set_target_properties(Zilch PROPERTIES FOLDER "ZeroLibraries")
-
-    include(Zilch/CMakeLists.txt)
-
-    target_include_directories(Zilch
-    PUBLIC
-        ${CurrentDirectory}/Zilch/Project
-        ${CurrentDirectory}/Zilch/Project/Zilch
-        ${VLD_INCLUDE_DIRS}
-        ${CurrentDirectory}
-    )
-
-    target_link_libraries(Zilch
-                        PUBLIC
-                        Common
-                        ${VLD_LIBRARIES}
-    )
-    
     set(Zero_OptionalTarget_Zilch Zilch)
 endif()
 
@@ -129,23 +68,8 @@ endif()
 # Meta
 ################################################################################
 if (${ZERO_BUILD_Meta})
-    add_library(Meta "")
+    add_subdirectory(Meta)
 
-    set_target_properties(Meta PROPERTIES FOLDER "ZeroLibraries")
-
-    include(Meta/CMakeLists.txt)
-
-    target_include_directories(Meta
-    PUBLIC
-        ${CurrentDirectory}/Meta 
-        ${CurrentDirectory}
-    )
-
-    target_link_libraries(Meta
-                        PUBLIC
-                        Zilch
-    )
-    
     set(Zero_OptionalTarget_Meta Meta)
 endif()
 
@@ -153,24 +77,8 @@ endif()
 # Serialization
 ################################################################################
 if (${ZERO_BUILD_Serialization})
-    add_library(Serialization "")
+add_subdirectory(Serialization)
 
-    set_target_properties(Serialization PROPERTIES FOLDER "ZeroLibraries")
-
-    include(Serialization/CMakeLists.txt)
-
-    target_include_directories(Serialization
-    PUBLIC
-        ${CurrentDirectory}/Serialization 
-        ${CurrentDirectory}
-    )
-
-    target_link_libraries(Serialization
-                        PUBLIC
-                        Common
-                        Geometry
-    )
-    
     set(Zero_OptionalTarget_Serialization Serialization)
 endif()
 
@@ -179,23 +87,8 @@ endif()
 # SpatialPartition
 ################################################################################
 if (${ZERO_BUILD_Common})
-    add_library(SpatialPartition  "")
+add_subdirectory(SpatialPartition)
 
-    set_target_properties(SpatialPartition PROPERTIES FOLDER "ZeroLibraries")
-
-    include(SpatialPartition/CMakeLists.txt)
-
-    target_include_directories(SpatialPartition
-    PUBLIC
-        ${CurrentDirectory}/SpatialPartition 
-        ${CurrentDirectory}
-    )
-
-    target_link_libraries(SpatialPartition
-                        PUBLIC
-                        Zilch
-    )
-    
     set(Zero_OptionalTarget_SpatialPartition SpatialPartition)
 endif()
 
@@ -204,25 +97,8 @@ endif()
 # Support
 ################################################################################
 if (${ZERO_BUILD_Support})
-    add_library(Support "")
+    add_subdirectory(Support)
 
-    set_target_properties(Support PROPERTIES FOLDER "ZeroLibraries")
-
-    include(Support/CMakeLists.txt)
-
-    target_include_directories(Support
-    PUBLIC
-        ${CurrentDirectory}/Support
-        ${CurrentDirectory}
-    )
-
-    target_link_libraries(Support
-                        PUBLIC
-                        Common
-                        ${ZLibStatic}
-                        ${LibpngStatic}
-    )
-    
     set(Zero_OptionalTarget_Support Support)
 endif()
 

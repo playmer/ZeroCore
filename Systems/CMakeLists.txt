@@ -21,204 +21,71 @@ endif()
 # Content
 ################################################################################
 if(${ZERO_BUILD_Content})
-    add_library(Content "")
-
-    set_target_properties(Content PROPERTIES FOLDER "Systems")
-
-    include(Content/CMakeLists.txt)
-
-    target_include_directories(Content 
-        PUBLIC 
-            ${CurrentDirectory}/Content
-            ${CurrentDirectory}
-    )
-
-    target_link_libraries(Content
-        PUBLIC
-        Common
-        Zilch
-        ${AssimpStatic}
-        ${NvttStatic}
-        ${OpusStatic}
-    )
+    add_subdirectory(Content)
 
     set(Zero_OptionalTarget_Content Content)
 endif()
 
 ################################################################################
-# Content
+# Engine
 ################################################################################
-if(${ZERO_BUILD_Content})
-    add_library(Engine "")
+if(${ZERO_BUILD_Engine})
     
-    set_target_properties(Engine PROPERTIES FOLDER "Systems")
-
-    include(Engine/CMakeLists.txt)
-
-    target_include_directories(Engine 
-        PUBLIC 
-            ${CurrentDirectory}/Engine
-            ${CurrentDirectory}
-    )
-    
-    target_link_libraries(Engine
-        PUBLIC
-        Common
-        Geometry
-        Zilch
-    )  
-    
-    add_custom_command(
-        TARGET Engine PRE_BUILD    
-        COMMAND ${CMAKE_COMMAND} 
-        # options
-        -DZERO_CORE_ROOT="${zero_core_path}"
-        # command
-        -P ${cmake_utilities_dir}/Update_Build_Version_Script.cmake
-    )
+    add_subdirectory(Engine)
     
     set(Zero_OptionalTarget_Engine Engine)
 endif()
+
 ################################################################################
 # Graphics
 ################################################################################
 if(${ZERO_BUILD_Graphics})
-    add_library(Graphics "")
-
-    set_target_properties(Graphics PROPERTIES FOLDER "Systems")
-
-    include(Graphics/CMakeLists.txt)
-
-    target_include_directories(Graphics
-        PUBLIC 
-            ${CurrentDirectory}
-    )
-    
-    target_link_libraries(Graphics
-        PUBLIC
-        Common
-        Geometry
-        ZilchShaders
-        ${FreetypeStatic}
-    ) 
+    add_subdirectory(Graphics)
 
     set(Zero_OptionalTarget_Graphics Graphics)
 endif()
+
 ################################################################################
 # Networking
 ################################################################################
 if(${ZERO_BUILD_Networking})
-    add_library(Networking "")
-
-    set_target_properties(Networking PROPERTIES FOLDER "Systems")
-
-    include(Networking/CMakeLists.txt)
-
-    target_include_directories(Networking 
-        PUBLIC 
-            ${CurrentDirectory}/Networking
-            ${CurrentDirectory}
-    )
-
-    target_link_libraries(Networking
-        PUBLIC
-        Common
-        Geometry
-    ) 
+    add_subdirectory(Networking)
 
     set(Zero_OptionalTarget_Networking Networking)
 endif()
+
 ################################################################################
 # Physics
 ################################################################################
 if(${ZERO_BUILD_Physics})
-    add_library(Physics "")
-
-    set_target_properties(Physics PROPERTIES FOLDER "Systems")
-
-    include(Physics/CMakeLists.txt)
-
-    target_include_directories(Physics 
-    PUBLIC 
-        ${CurrentDirectory}
-    )
-
-    target_link_libraries(Physics
-        PUBLIC
-        Zilch
-    ) 
+    add_subdirectory(Physics)
 
     set(Zero_OptionalTarget_Physics Physics)
 endif()
+
 ################################################################################
 # Sound
 ################################################################################
 if(${ZERO_BUILD_Sound})
-    add_library(Sound "")
-
-    set_target_properties(Sound PROPERTIES FOLDER "Systems")
-
-    include(Sound/CMakeLists.txt)
-
-    target_include_directories(Sound 
-    PUBLIC 
-        ${CurrentDirectory}
-    )
-
-    target_link_libraries(Sound
-        PUBLIC
-        Common
-        Geometry
-        ${OpusStatic}
-    ) 
+    add_subdirectory(Sound)
 
     set(Zero_OptionalTarget_Sound Sound)
 endif()
+
 ################################################################################
 # Startup
 ################################################################################
 if(${ZERO_BUILD_Startup})
-    add_library(Startup "")
-
-    set_target_properties(Startup PROPERTIES FOLDER "Systems")
-
-    include(Startup/CMakeLists.txt)
-
-    target_include_directories(Startup 
-    PUBLIC 
-        ${CurrentDirectory}
-    )
-
-    target_link_libraries(Startup
-        PUBLIC
-        Common
-        Geometry
-        Graphics
-    ) 
+    add_subdirectory(Startup)
 
     set(Zero_OptionalTarget_Startup Startup)
 endif()
+
 ################################################################################
 # ZilchScript
 ################################################################################
 if(${ZERO_BUILD_ZilchScript})
-    add_library(ZilchScript "")
-
-    set_target_properties(ZilchScript PROPERTIES FOLDER "Systems")
-
-    include(ZilchScript/CMakeLists.txt)
-
-    target_include_directories(ZilchScript 
-    PUBLIC 
-        ${CurrentDirectory}
-    )
-
-    target_link_libraries(ZilchScript
-        PUBLIC
-        Common
-        Geometry
-        Editor
-    ) 
+    add_subdirectory(ZilchScript)
 
     set(Zero_OptionalTarget_ZilchScript ZilchScript)
 endif()

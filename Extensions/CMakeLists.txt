@@ -27,22 +27,7 @@ endif()
 # CodeTranslator
 ################################################################################
 if(${ZERO_BUILD_CodeTranslator})
-    add_library(CodeTranslator "")
-
-    set_target_properties(CodeTranslator PROPERTIES FOLDER "Extensions")
-
-    include(CodeTranslator/CMakeLists.txt)
-
-    target_include_directories(CodeTranslator 
-        PUBLIC 
-            ${CurrentDirectory}
-
-    )
-
-    target_link_libraries(CodeTranslator
-                        PUBLIC
-                        Engine
-    )
+    add_subdirectory(CodeTranslator)
 
     set(Zero_OptionalTarget_CodeTranslator CodeTranslator)
 endif()
@@ -51,26 +36,7 @@ endif()
 # Editor
 ################################################################################
 if(${ZERO_BUILD_Editor})
-    add_library(Editor "")
-
-    set_target_properties(Editor PROPERTIES FOLDER "Extensions")
-
-    include(Editor/CMakeLists.txt)
-
-    target_include_directories(Editor 
-        PUBLIC 
-            ${CurrentDirectory}/../ZeroLibraries/Zilch/Project    
-            ${CurrentDirectory}/Widget
-            ${CurrentDirectory}/Editor
-            ${CurrentDirectory}/../Systems
-            ${CurrentDirectory}/../ZeroLibraries
-            ${CurrentDirectory}
-    )
-
-    target_link_libraries(Editor
-                        PUBLIC
-                        Common
-    ) 
+    add_subdirectory(Editor)
 
     set(Zero_OptionalTarget_Editor Editor)
 endif()
@@ -79,26 +45,7 @@ endif()
 # Gameplay
 ################################################################################
 if(${ZERO_BUILD_Gameplay})
-    add_library(Gameplay "")
-
-    set_target_properties(Gameplay PROPERTIES FOLDER "Extensions")
-
-    include(Gameplay/CMakeLists.txt)
-
-    target_include_directories(Gameplay
-        PUBLIC 
-            ${CurrentDirectory}
-            Platform
-            BrowserSubProcess
-    )
-
-    target_link_libraries(Gameplay
-                        PUBLIC
-                        Common
-                        Zilch
-                        Engine
-                        ${CEFStatic}
-    )
+    add_subdirectory(Gameplay)
 
     set(Zero_OptionalTarget_Gameplay Gameplay)
 endif()
@@ -107,22 +54,7 @@ endif()
 # UiWidget
 ################################################################################
 if(${ZERO_BUILD_UiWidget})
-    add_library(UiWidget "")
-
-    set_target_properties(UiWidget PROPERTIES FOLDER "Extensions")
-
-    include(UiWidget/CMakeLists.txt)
-
-    target_include_directories(UiWidget 
-        PUBLIC 
-            ${CurrentDirectory}
-
-    )
-
-    target_link_libraries(UiWidget
-                        PUBLIC
-                        Engine
-    ) 
+    add_subdirectory(UiWidget)
 
     set(Zero_OptionalTarget_UiWidget UiWidget)
 endif()
@@ -131,22 +63,7 @@ endif()
 # Widget
 ################################################################################
 if(${ZERO_BUILD_Widget})
-    add_library(Widget "")
-
-    set_target_properties(Widget PROPERTIES FOLDER "Extensions")
-    
-    include(Widget/CMakeLists.txt)
-
-    target_include_directories(Widget
-        PUBLIC 
-            ${CurrentDirectory}
-
-    )
-
-    target_link_libraries(Widget
-                        PUBLIC
-                        Engine
-    ) 
+    add_subdirectory(Widget)
 
     set(Zero_OptionalTarget_Widget Widget)
 endif()
@@ -155,35 +72,8 @@ endif()
 # ZilchShaders
 ################################################################################
 if(${ZERO_BUILD_ZilchShaders})
-    add_library(ZilchShaders "")
-
-    set_target_properties(ZilchShaders PROPERTIES FOLDER "Extensions")
-
-    include(ZilchShaders/CMakeLists.txt)
-
-    target_include_directories(ZilchShaders
-        PUBLIC 
-            ${CurrentDirectory}
-            ${CurrentDirectory}/SpirV/SPIRV-Cross
-            ${CurrentDirectory}/SpirV/SpirVFiles
-            ${CurrentDirectory}/SpirV/SpirVFiles/external
-            ${CurrentDirectory}/SpirV/SpirVFiles/external/SPIRV-Headers/include
-            ${CurrentDirectory}/SpirV/SpirVFiles/include
-            ${CurrentDirectory}/SpirV/SpirVFiles/include/spirv-tools
-            ${CurrentDirectory}/SpirV/SpirVFiles/build
-            ${CurrentDirectory}/SpirV/SpirVFiles/tools
-            ${CurrentDirectory}/SpirV/SpirVFiles/source
-    )
-
-    target_link_libraries(ZilchShaders
-                        PRIVATE
-                        Common
-                        Geometry
-                        Zilch
-                        SPIRV-Cross
-                        SPIRV-Tools-opt
-    ) 
-
+    add_subdirectory(ZilchShaders)
+    
     set(Zero_OptionalTarget_ZilchShaders ZilchShaders)
 endif()
 

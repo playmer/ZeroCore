@@ -2,8 +2,32 @@
 # Generated using Joshua T. Fisher's 'CMake Builder'.
 # Link: https://github.com/playmer/CmakeBuilder 
 ################################################################################
-include(${CMAKE_CURRENT_LIST_DIR}/Generated.cmake)
+add_library(ZilchScript "")
+
+set_target_properties(ZilchScript PROPERTIES FOLDER "Systems")
 
 target_sources(ZilchScript
-    PRIVATE
+  PRIVATE
+    ${CMAKE_CURRENT_LIST_DIR}/Precompiled.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/Precompiled.hpp
+    ${CMAKE_CURRENT_LIST_DIR}/ZilchPlugin.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/ZilchPlugin.hpp
+    ${CMAKE_CURRENT_LIST_DIR}/ZilchScript.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/ZilchScript.hpp
+    ${CMAKE_CURRENT_LIST_DIR}/ZilchScriptStandard.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/ZilchScriptStandard.hpp
+    ${CMAKE_CURRENT_LIST_DIR}/ZilchZero.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/ZilchZero.hpp
 )
+
+target_include_directories(ZilchScript 
+PUBLIC 
+    ${CMAKE_CURRENT_LIST_DIR}/../
+)
+
+target_link_libraries(ZilchScript
+    PUBLIC
+    Common
+    Geometry
+    Editor
+) 
