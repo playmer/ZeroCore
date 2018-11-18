@@ -3,7 +3,7 @@
 # Copyright 2017, DigiPen Institute of Technology
 ################################################################################
 # get our current directory
-set(CurrentDirectory ${CMAKE_CURRENT_LIST_DIR})
+set(SystemsDirectory ${CMAKE_CURRENT_LIST_DIR})
 
 if(NOT ${ZERO_BUILD_Content} AND
    NOT ${ZERO_BUILD_Engine} AND
@@ -206,39 +206,4 @@ if(${ZERO_NO_SYSTEMS})
             LINK_FLAGS "${common_linker_flags}"
         )
     endif()
-endif()
-
-################################################################################
-# Group source into folders
-################################################################################
-if(${ZERO_BUILD_Content})
-    zero_subfolder_source_group(${zero_core_path} Extensions Content "")
-endif()
-
-if(${ZERO_BUILD_Engine})
-    zero_subfolder_source_group(${zero_core_path} Extensions Engine "")
-endif()
-
-if(${ZERO_BUILD_Graphics})
-    zero_subfolder_source_group(${zero_core_path} Extensions Graphics "")
-endif()
-
-if(${ZERO_BUILD_Networking})
-    zero_subfolder_source_group(${zero_core_path} Extensions Networking "")
-endif()
-
-if(${ZERO_BUILD_Physics})
-    zero_subfolder_source_group(${zero_core_path} Extensions Physics "")
-endif()
-
-if(${ZERO_BUILD_Sound})
-    zero_subfolder_source_group(${zero_core_path} Extensions Sound "")
-endif()
-
-if(${ZERO_BUILD_Startup})
-    zero_subfolder_source_group(${zero_core_path} Extensions Startup "")
-endif()
-
-if(${ZERO_BUILD_ZilchScript})
-    zero_subfolder_source_group(${zero_core_path} Extensions ZilchScript "")
 endif()

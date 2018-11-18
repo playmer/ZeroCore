@@ -77,3 +77,5 @@ target_link_libraries(Networking
     Common
     Geometry
 ) 
+
+zero_source_group(${CMAKE_CURRENT_LIST_DIR} Networking "")

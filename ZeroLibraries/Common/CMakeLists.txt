@@ -270,3 +270,5 @@ PUBLIC
     ${CMAKE_CURRENT_LIST_DIR}/
     ${CMAKE_CURRENT_LIST_DIR}/../
 )
+
+zero_source_group(${CMAKE_CURRENT_LIST_DIR} Common "")

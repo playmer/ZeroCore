@@ -60,3 +60,5 @@ target_link_libraries(Dash
                     Zilch                      
                     Geometry
 ) 
+
+zero_source_group(${CMAKE_CURRENT_LIST_DIR} Dash "")

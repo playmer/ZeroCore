@@ -89,3 +89,5 @@ target_link_libraries(Sound
     Geometry
     ${OpusStatic}
 ) 
+
+zero_source_group(${CMAKE_CURRENT_LIST_DIR} Sound "")

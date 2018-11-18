@@ -121,3 +121,5 @@ target_link_libraries(ZilchShaders
                 SPIRV-Cross
                 SPIRV-Tools-opt
 ) 
+
+zero_source_group(${CMAKE_CURRENT_LIST_DIR} ZilchShaders "")

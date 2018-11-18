@@ -90,3 +90,5 @@ target_link_libraries(Geometry
                     Common
                     Zilch
 ) 
+
+zero_source_group(${CMAKE_CURRENT_LIST_DIR} Geometry "")

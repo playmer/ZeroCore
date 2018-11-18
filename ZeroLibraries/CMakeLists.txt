@@ -2,11 +2,8 @@
 # Author: Joshua Shlemmer
 # Copyright 2017, DigiPen Institute of Technology
 ################################################################################
-# get our parent directory
-get_filename_component(ParentDirectory ${CMAKE_CURRENT_SOURCE_DIR} DIRECTORY)
-
 # get our current directory
-set(CurrentDirectory ${CMAKE_CURRENT_LIST_DIR})
+set(ZeroLibrariesDirectory ${CMAKE_CURRENT_LIST_DIR})
 
 if (NOT ${ZERO_BUILD_Common} AND
     NOT ${ZERO_BUILD_Dash} AND
@@ -280,39 +277,4 @@ if (${ZERO_NO_CORE_LIBRARIES})
             STATIC_LIBRARY_FLAGS_RELEASE "/LTCG"
         )
     endif()
-endif()
-
-################################################################################
-# Group source into folders
-################################################################################
-if(${ZERO_BUILD_Common})
-    zero_subfolder_source_group(${zero_core_path} ZeroLibraries Common "")
-endif()
-
-if(${ZERO_BUILD_Dash})
-    zero_subfolder_source_group(${zero_core_path} ZeroLibraries Dash "")
-endif()
-
-if(${ZERO_BUILD_Geometry})
-    zero_subfolder_source_group(${zero_core_path} ZeroLibraries Geometry "")
-endif()
-
-if(${ZERO_BUILD_Meta})
-    zero_subfolder_source_group(${zero_core_path} ZeroLibraries Meta "")
-endif()
-
-if(${ZERO_BUILD_Serialization})
-    zero_subfolder_source_group(${zero_core_path} ZeroLibraries Serialization "")
-endif()
-
-if(${ZERO_BUILD_SpatialPartition})
-    zero_subfolder_source_group(${zero_core_path} ZeroLibraries SpatialPartition "")
-endif()
-
-if(${ZERO_BUILD_Support})
-    zero_subfolder_source_group(${zero_core_path} ZeroLibraries Support "")
-endif()
-    
-if(${ZERO_BUILD_Zilch})
-    zero_subfolder_source_group(${zero_core_path} ZeroLibraries Zilch "")
 endif()

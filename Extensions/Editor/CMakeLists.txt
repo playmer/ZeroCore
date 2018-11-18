@@ -467,3 +467,5 @@ target_link_libraries(Editor
                 PUBLIC
                 Common
 ) 
+
+zero_source_group(${CMAKE_CURRENT_LIST_DIR} Editor "")

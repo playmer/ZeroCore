@@ -235,3 +235,5 @@ add_custom_command(
     # command
     -P ${cmake_utilities_dir}/Update_Build_Version_Script.cmake
 )
+
+zero_source_group(${CMAKE_CURRENT_LIST_DIR} Engine "")

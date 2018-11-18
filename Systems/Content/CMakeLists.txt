@@ -104,3 +104,5 @@ target_link_libraries(Content
     ${NvttStatic}
     ${OpusStatic}
 )
+
+zero_source_group(${CMAKE_CURRENT_LIST_DIR} Content "")

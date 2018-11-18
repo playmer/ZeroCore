@@ -26,3 +26,5 @@ target_link_libraries(Startup
     Geometry
     Graphics
 ) 
+
+zero_source_group(${CMAKE_CURRENT_LIST_DIR} Startup "")

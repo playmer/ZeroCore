@@ -31,3 +31,5 @@ target_link_libraries(ZilchScript
     Geometry
     Editor
 ) 
+
+zero_source_group(${CMAKE_CURRENT_LIST_DIR} ZilchScript "")

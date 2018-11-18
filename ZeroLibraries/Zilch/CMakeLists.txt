@@ -156,3 +156,5 @@ target_link_libraries(Zilch
                     Common
                     ${VLD_LIBRARIES}
 )
+
+zero_source_group(${CMAKE_CURRENT_LIST_DIR} Zilch "")

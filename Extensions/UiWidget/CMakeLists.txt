@@ -37,3 +37,5 @@ target_link_libraries(UiWidget
                 PUBLIC
                 Engine
 ) 
+
+zero_source_group(${CMAKE_CURRENT_LIST_DIR} UiWidget "")

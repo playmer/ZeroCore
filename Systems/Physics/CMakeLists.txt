@@ -268,3 +268,5 @@ target_link_libraries(Physics
     PUBLIC
     Zilch
 ) 
+
+zero_source_group(${CMAKE_CURRENT_LIST_DIR} Physics "")

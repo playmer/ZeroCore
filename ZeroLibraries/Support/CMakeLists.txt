@@ -49,3 +49,5 @@ target_link_libraries(Support
                     ${ZLibStatic}
                     ${LibpngStatic}
 )
+
+zero_source_group(${CMAKE_CURRENT_LIST_DIR} Support "")

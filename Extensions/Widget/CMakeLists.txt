@@ -102,3 +102,5 @@ target_link_libraries(Widget
                 PUBLIC
                 Engine
 ) 
+
+zero_source_group(${CMAKE_CURRENT_LIST_DIR} Widget "")

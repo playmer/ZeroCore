@@ -2,11 +2,7 @@
 # Author: Joshua Shlemmer
 # Copyright 2017, DigiPen Institute of Technology
 ################################################################################
-# get our parent directory
-get_filename_component(ParentDirectory ${CMAKE_CURRENT_SOURCE_DIR} DIRECTORY)
-
-# get our current directory
-set(CurrentDirectory ${CMAKE_CURRENT_LIST_DIR})
+set(ExtensionsDirectory ${CMAKE_CURRENT_LIST_DIR})
 
 if(use_spirv_shared_library)
   set(SpirVToolsCompileOptions -DSPIRV_TOOLS_SHAREDLIB)
@@ -193,32 +189,4 @@ if (${ZERO_NO_EXTENSIONS})
     endif()
 endif()
 
-################################################################################
-# Group source into folders
-################################################################################
-# We require the ifs here due to adding in the precompiled header in a 
-# multitarget function, we can't place this source group earlier due to that.
-if(${ZERO_BUILD_CodeTranslator})
-    zero_subfolder_source_group(${zero_core_path} Extensions CodeTranslator "")
-endif()
-
-if(${ZERO_BUILD_Editor})
-    zero_subfolder_source_group(${zero_core_path} Extensions Editor "")
-endif()
-
-if(${ZERO_BUILD_Gameplay})
-    zero_subfolder_source_group(${zero_core_path} Extensions Gameplay "")
-endif()
-
-if(${ZERO_BUILD_UiWidget})
-    zero_subfolder_source_group(${zero_core_path} Extensions UiWidget "")
-endif()
-
-if(${ZERO_BUILD_Widget})
-    zero_subfolder_source_group(${zero_core_path} Extensions Widget "")
-endif()
-
-if(${ZERO_BUILD_ZilchShaders})
-    zero_subfolder_source_group(${zero_core_path} Extensions ZilchShaders "")
-endif()
 

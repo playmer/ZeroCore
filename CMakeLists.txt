@@ -56,14 +56,14 @@ function(zero_turn_remaining_builds_off)
     # External
 
     # Systems
-    option(ZERO_BUILD_Content "Build the Content project" OFF}
-    option(ZERO_BUILD_Engine "Build the Engine project" OFF}
-    option(ZERO_BUILD_Graphics "Build the Graphics project" OFF}
-    option(ZERO_BUILD_Networking "Build the Networking project" OFF}
-    option(ZERO_BUILD_Physics "Build the Physics project" OFF}
-    option(ZERO_BUILD_Sound "Build the Sound project" OFF}
-    option(ZERO_BUILD_Startup "Build the Startup project" OFF}
-    option(ZERO_BUILD_ZilchScript "Build the ZilchScript project" OFF}
+    option(ZERO_BUILD_Content "Build the Content project" OFF)
+    option(ZERO_BUILD_Engine "Build the Engine project" OFF)
+    option(ZERO_BUILD_Graphics "Build the Graphics project" OFF)
+    option(ZERO_BUILD_Networking "Build the Networking project" OFF)
+    option(ZERO_BUILD_Physics "Build the Physics project" OFF)
+    option(ZERO_BUILD_Sound "Build the Sound project" OFF)
+    option(ZERO_BUILD_Startup "Build the Startup project" OFF)
+    option(ZERO_BUILD_ZilchScript "Build the ZilchScript project" OFF)
 
     # Extensions
     option(ZERO_BUILD_CodeTranslator "Build the CodeTranslator project" OFF)
@@ -135,14 +135,14 @@ option(ZERO_BUILD_Zilch "Build the Zilch project" ON)
 #####################
 # Systems
 #####################
-option(ZERO_BUILD_Content "Build the Content project" ON}
-option(ZERO_BUILD_Engine "Build the Engine project" ON}
-option(ZERO_BUILD_Graphics "Build the Graphics project" ON}
-option(ZERO_BUILD_Networking "Build the Networking project" ON}
-option(ZERO_BUILD_Physics "Build the Physics project" ON}
-option(ZERO_BUILD_Sound "Build the Sound project" ON}
-option(ZERO_BUILD_Startup "Build the Startup project" ON}
-option(ZERO_BUILD_ZilchScript "Build the ZilchScript project" ON}
+option(ZERO_BUILD_Content "Build the Content project" ON)
+option(ZERO_BUILD_Engine "Build the Engine project" ON)
+option(ZERO_BUILD_Graphics "Build the Graphics project" ON)
+option(ZERO_BUILD_Networking "Build the Networking project" ON)
+option(ZERO_BUILD_Physics "Build the Physics project" ON)
+option(ZERO_BUILD_Sound "Build the Sound project" ON)
+option(ZERO_BUILD_Startup "Build the Startup project" ON)
+option(ZERO_BUILD_ZilchScript "Build the ZilchScript project" ON)
 
 #####################
 # Extensions

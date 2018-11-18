@@ -76,3 +76,5 @@ target_link_libraries(SpatialPartition
                     PUBLIC
                     Zilch
 )
+
+zero_source_group(${CMAKE_CURRENT_LIST_DIR} SpatialPartition "")

@@ -6,7 +6,6 @@ add_library(CodeTranslator "")
 
 set_target_properties(CodeTranslator PROPERTIES FOLDER "Extensions")
 
-include(${CMAKE_CURRENT_LIST_DIR}/Generated.cmake)
 target_sources(CodeTranslator
   PRIVATE
   ${CMAKE_CURRENT_LIST_DIR}/CodeSplitWindow.cpp
@@ -29,3 +28,5 @@ target_link_libraries(CodeTranslator
                 PUBLIC
                 Engine
 )
+
+zero_source_group(${CMAKE_CURRENT_LIST_DIR} CodeTranslator "")
