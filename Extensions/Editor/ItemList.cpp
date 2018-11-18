@@ -350,7 +350,7 @@ Item::Item(Composite* parent, StringParam itemName, StringParam displayName, uin
 
   mFocusHighlight = CreateAttached<Element>(cWhiteSquareBorder);
   mFocusHighlight->SetNotInLayout(true);
-  mFocusHighlight->SetColor(Vec4(0.191699997, 0.475143999, 0.709999979, 0.675f));
+  mFocusHighlight->SetColor(Vec4(0.191699997f, 0.475143999f, 0.709999979f, 0.675f));
   mFocusHighlight->SetActive(false);
 
   ConnectThisTo(this, Events::MouseEnter, OnMouseEnter);
@@ -364,7 +364,7 @@ Item::Item(Composite* parent, StringParam itemName, StringParam displayName, uin
 //**************************************************************************************************
 void Item::OnMouseEnter(Event*)
 {
-  Vec4 highlightColor(0.191699997, 0.475143999, 0.709999979, 0.5f);
+  Vec4 highlightColor(0.191699997f, 0.475143999f, 0.709999979f, 0.5f);
   mBackground->SetColor(highlightColor);
 }
 
@@ -378,7 +378,7 @@ void Item::OnMouseClick(Event*)
 //**************************************************************************************************
 void Item::OnMouseExit(Event*)
 {
-  Vec4 highlightColor(0.191699997, 0.475143999, 0.709999979, 0.375f);
+  Vec4 highlightColor(0.191699997f, 0.475143999f, 0.709999979f, 0.375f);
 
   if(mSelected)
     mBackground->SetColor(highlightColor);
@@ -404,7 +404,7 @@ void Item::OnFocusLost(Event*)
 void Item::Select()
 {
   mSelected = true;
-  Vec4 highlightColor(0.191699997, 0.475143999, 0.709999979, 0.375f);
+  Vec4 highlightColor(0.191699997f, 0.475143999f, 0.709999979f, 0.375f);
   mBackground->SetColor(highlightColor);
 }
 

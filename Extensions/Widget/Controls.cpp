@@ -89,7 +89,7 @@ Splitter::Splitter(Composite* parent)
   mDefSet = mDefSet->GetDefinitionSet(SplitterClass);
   mBackground = CreateAttached<Element>(cWhiteSquare);
   mBackground->SetInteractive(true);
-  mBackground->SetColor(Vec4(0.139216, 0.139216, 0.139216, 1));
+  mBackground->SetColor(Vec4(0.139216f, 0.139216f, 0.139216f, 1.f));
 
   ConnectThisTo(mBackground, Events::LeftMouseDown, OnLeftMouseDown);
   ConnectThisTo(mBackground, Events::LeftMouseUp, OnLeftMouseUp);

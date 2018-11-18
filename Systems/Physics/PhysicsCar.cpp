@@ -25,8 +25,8 @@ ZilchDefineType(PhysicsCar, builder, type)
   ZilchBindFieldProperty(mGripScalar);
   ZilchBindFieldProperty(mAntiLockBrakes);
   ZilchBindFieldProperty(mTorqueGovernor);
-  ZilchBindFieldProperty(mWheelFrictionSideRollCoef)->Add(new EditorSlider(0, 1, 0.001));
-  ZilchBindFieldProperty(mWheelFrictionFrontRollCoef)->Add(new EditorSlider(0, 1, 0.001));
+  ZilchBindFieldProperty(mWheelFrictionSideRollCoef)->Add(new EditorSlider(0.f, 1.f, 0.001f));
+  ZilchBindFieldProperty(mWheelFrictionFrontRollCoef)->Add(new EditorSlider(0.f, 1.f, 0.001f));
 
   ZilchBindGetterSetter(Steer);
   ZilchBindGetterSetter(Gas);

@@ -15,7 +15,7 @@ namespace Zero
 
 // Default Quantum Values
 const int   BitStreamExtended::DefaultIntegralQuantum      = 1;
-const float BitStreamExtended::DefaultFloatingPointQuantum = 0.0001;
+const float BitStreamExtended::DefaultFloatingPointQuantum = 0.0001f;
 
 ZilchDefineType(BitStreamExtended, builder, type)
 {

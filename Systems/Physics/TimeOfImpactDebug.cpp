@@ -27,7 +27,7 @@ ZilchDefineType(TimeOfImpactDebug, builder, type)
 }
 
 TimeOfImpactDebug::TimeOfImpactDebug()
-  : mSimulatedDt(0.0167)
+  : mSimulatedDt(0.0167f)
   , mSteps(0)
 {
 }

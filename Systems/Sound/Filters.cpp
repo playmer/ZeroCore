@@ -2029,7 +2029,7 @@ float ADSR::operator()()
     break;
   }
 
-  mCurrentTime += cSystemTimeIncrement;
+  mCurrentTime += static_cast<float>(cSystemTimeIncrement);
   mLastAmplitude = amplitude;
 
   return amplitude;

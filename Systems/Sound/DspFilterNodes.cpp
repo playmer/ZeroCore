@@ -2016,7 +2016,7 @@ AddNoiseNode::AddNoiseNode(StringParam name, unsigned ID) :
   mAdditiveNoiseDB(-40.0f),
   mMultipleNoiseDB(-10.0f),
   mAdditiveNoiseCutoffHz(2000.0f),
-  mMultipleNoiseCutoffHz(50.05),
+  mMultipleNoiseCutoffHz(50.05f),
   mAddCountThreaded(0),
   mMultiplyCountThreaded(0)
 {

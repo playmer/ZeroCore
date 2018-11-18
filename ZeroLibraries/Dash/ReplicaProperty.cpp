@@ -578,7 +578,7 @@ void UpdateCurveArithmetic(ReplicaProperty* replicaProperty, const ReplicaProper
     //
 
     // Bake out spline curve to be sampled later
-    replicaProperty->mBakedCurve[i].Bake(replicaProperty->mSplineCurve[i], 0.05);
+    replicaProperty->mBakedCurve[i].Bake(replicaProperty->mSplineCurve[i], 0.05f);
   }
 }
 
