@@ -53,7 +53,11 @@ function(zero_turn_remaining_builds_off)
     option(ZERO_BUILD_Support "Build the Support project" OFF)
     option(ZERO_BUILD_Zilch "Build the Zilch project" OFF)
 
-    # External
+    # Projects
+    option(ZERO_BUILD_ZeroEditor "Build the ZeroEditor project" OFF)
+    option(ZERO_BUILD_ZeroLauncher "Build the ZeroLauncher project" OFF)
+    option(ZERO_BUILD_ZeroLauncherSharedLibrary "Build the ZeroLauncherSharedLibrary project" OFF)
+    option(ZERO_BUILD_BrowserSubProcess "Build the BrowserSubProcess project" OFF)
 
     # Systems
     option(ZERO_BUILD_Content "Build the Content project" OFF)
