@@ -23,8 +23,6 @@ function(zero_target_precompiled_headers aTarget aIntPath aHeaderName aSourceNam
 
       # if it is the precompiled cpp
       if(${targetSourceJustNameAndExtension} STREQUAL ${pathToSource})
-        message(pchFound: ${targetSource})
-
         set_source_files_properties(${targetSource} PROPERTIES COMPILE_FLAGS
         "/Yc\"${aHeaderName}\" /Fp\"${precompiledObj}\"")
         set_source_files_properties(${targetSource} PROPERTIES OBJECT_OUTPUTS "${precompiledObj}")
@@ -43,42 +41,4 @@ function(zero_target_precompiled_headers aTarget aIntPath aHeaderName aSourceNam
   message("Precompiled header added for target: ${aTarget}")
 
   set_property(GLOBAL PROPERTY "${aTarget}_Precompiled_Headers_Enabled" TRUE)
-
-endfunction()
-
-
-function(zero_target_precompiled_headers_helper)
-    # set arguments
-    set(oneValueArgs CONFIGS BASEPATH PLATFORM BITS TOOLSET PRECOMPILED_HEADER_NAME PRECOMPILED_SOURCE_NAME TARGET_SUBFOLDER IGNORE_TARGET CONFIG)
-    cmake_parse_arguments(PARSED "" "${oneValueArgs}" "" ${ARGN})
-
-    if("${PARSED_IGNORE_TARGET}" STREQUAL "")
-        set(PARSED_IGNORE_TARGET OFF)
-    endif()
-
-
-    set(PARSED_TARGETS ${PARSED_UNPARSED_ARGUMENTS})
-
-    # because of the way option sets were implemented, we must handle the no targets case
-    if (PARSED_TARGETS STREQUAL "")
-        return()
-    endif()
-
-    foreach(target ${PARSED_TARGETS})
-      # if we were passed a config, seperate our intermediate files by config instead of platform
-      if(PARSED_CONFIG)
-        set(intOutputDirectory "${PARSED_BASEPATH}/Int/${PARSED_CONFIG}/${PARSED_BITS}${CONFIGS}/${target}")
-      else()
-        set(intOutputDirectory "${PARSED_BASEPATH}/Int/${PARSED_PLATFORM}/${PARSED_BITS}${CONFIGS}/${target}")
-      endif()
-      
-      # if we were passed values for the precompiled headers, set the target precompiled headers
-      if (NOT ("${PARSED_PRECOMPILED_HEADER_NAME}" STREQUAL ""))
-          message(stuff: ${target} : "${intOutputDirectory}" : ${PARSED_PRECOMPILED_HEADER_NAME} : ${PARSED_PRECOMPILED_SOURCE_NAME})
-
-          zero_target_precompiled_headers(${target} "${intOutputDirectory}" ${PARSED_PRECOMPILED_HEADER_NAME} ${PARSED_PRECOMPILED_SOURCE_NAME})
-      else()
-          message("<><><> Skipped precompiled for target: ${target}\n")
-      endif()
-    endforeach()
 endfunction()
