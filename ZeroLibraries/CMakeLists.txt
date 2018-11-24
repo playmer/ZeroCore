@@ -15,6 +15,8 @@ if (NOT ${ZERO_BUILD_Common} AND
     NOT ${ZERO_BUILD_Support} AND
     NOT ${ZERO_BUILD_Zilch})
     set(ZERO_NO_CORE_LIBRARIES ON)
+else()
+    set(ZERO_NO_CORE_LIBRARIES OFF)
 endif()
 
 ################################################################################
@@ -99,7 +101,7 @@ if (${ZERO_BUILD_Support})
     set(Zero_OptionalTarget_Support Support)
 endif()
 
-if (${ZERO_NO_CORE_LIBRARIES})
+if (NOT ${ZERO_NO_CORE_LIBRARIES})
     ################################################################################
     # set the output directories for all of our targets
     ################################################################################
@@ -115,46 +117,6 @@ if (${ZERO_NO_CORE_LIBRARIES})
         LIBRARY_DIRECTORY ${zero_library_dir}
         RUNTIME_DIRECTORY ${zero_binary_dir}
     )
-
-    ################################################################################
-    # Specify any additional target options such as pdb locations
-    ################################################################################
-
-    if (${CMAKE_CXX_COMPILER_ID} STREQUAL MSVC OR (CMAKE_GENERATOR_TOOLSET STREQUAL "LLVM-vs2014"))
-        zero_multitarget_output_settings(
-            ${Zero_OptionalTarget_Common}
-            ${Zero_OptionalTarget_Dash}
-            ${Zero_OptionalTarget_Geometry}
-            ${Zero_OptionalTarget_Meta}
-            ${Zero_OptionalTarget_Serialization}
-            ${Zero_OptionalTarget_SpatialPartition}
-            ${Zero_OptionalTarget_Support}
-            CONFIGS ${supported_configs}
-            BASEPATH ${zero_build_out}
-            PLATFORM ${platform}
-            CONFIG ${configuration}
-            BITS ${bit}
-            TOOLSET ${CMAKE_VS_PLATFORM_TOOLSET}
-            PRECOMPILED_HEADER_NAME "Precompiled.hpp"
-            PRECOMPILED_SOURCE_NAME "Precompiled.cpp"
-            TARGET_SUBFOLDER
-        )
-        
-        if (${ZERO_BUILD_Zilch})
-            zero_multitarget_output_settings(
-                Zilch 
-                CONFIGS ${supported_configs}
-                BASEPATH ${zero_build_out}
-                PLATFORM ${platform}
-                CONFIG ${configuration}
-                BITS ${bit}
-                TOOLSET ${CMAKE_VS_PLATFORM_TOOLSET}
-                PRECOMPILED_HEADER_NAME "Zilch.hpp"
-                PRECOMPILED_SOURCE_NAME "Zilch.cpp"
-                TARGET_SUBFOLDER "Zilch/Project"
-            )
-        endif()
-    endif()
 
     ################################################################################
     # set flags and definitions

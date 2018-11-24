@@ -15,6 +15,8 @@ if (NOT ${ZERO_BUILD_CodeTranslator} AND
     NOT ${ZERO_BUILD_Widget} AND
     NOT ${ZERO_BUILD_ZilchShaders})
     set(ZERO_NO_EXTENSIONS ON)
+else()
+    set(ZERO_NO_EXTENSIONS OFF)
 endif()
 
 ################################################################################
@@ -73,7 +75,7 @@ endif()
 
 
 # We might have no extensions on, so don't try setting any of this.
-if (${ZERO_NO_EXTENSIONS})
+if (NOT ${ZERO_NO_EXTENSIONS})
     ################################################################################
     # set the output directories for all of our targets
     ################################################################################
@@ -86,29 +88,6 @@ if (${ZERO_NO_EXTENSIONS})
                         LIBRARY_DIRECTORY ${zero_library_dir}
                         RUNTIME_DIRECTORY ${zero_binary_dir}
     )
-
-    ################################################################################
-    # Specify any additional target options such as pdb locations
-    ################################################################################
-    if (${CMAKE_CXX_COMPILER_ID} STREQUAL MSVC OR (CMAKE_GENERATOR_TOOLSET STREQUAL "LLVM-vs2014"))
-        zero_multitarget_output_settings(
-            ${Zero_OptionalTarget_CodeTranslator}
-            Editor
-            Gameplay 
-            UiWidget 
-            Widget
-            ZilchShaders
-            CONFIGS ${supported_configs}
-            BASEPATH ${zero_build_out}
-            PLATFORM ${platform}
-            CONFIG ${configuration}
-            BITS ${bit}
-            TOOLSET ${CMAKE_VS_PLATFORM_TOOLSET}
-            PRECOMPILED_HEADER_NAME "Precompiled.hpp"
-            PRECOMPILED_SOURCE_NAME "Precompiled.cpp"
-            TARGET_SUBFOLDER
-        )
-    endif()
 
     ################################################################################
     # set flags and definitions

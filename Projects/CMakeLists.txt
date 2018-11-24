@@ -42,52 +42,6 @@ zero_multitarget_output_directories(
 )
 
 ################################################################################
-# Specify any additional target options such as pdb locations
-################################################################################
-if (${CMAKE_CXX_COMPILER_ID} STREQUAL MSVC OR (CMAKE_GENERATOR_TOOLSET STREQUAL "LLVM-vs2014"))
-    zero_multitarget_output_settings(
-        ${Zero_OptionalTarget_ZeroEditor}
-        CONFIGS ${supported_configs}
-        BASEPATH ${zero_build_out}
-        PLATFORM ${platform}
-        CONFIG ${configuration}
-        BITS ${bit}
-        TOOLSET ${CMAKE_VS_PLATFORM_TOOLSET}
-        PRECOMPILED_HEADER_NAME "Precompiled.hpp"
-        PRECOMPILED_SOURCE_NAME "Precompiled.cpp"
-        TARGET_SUBFOLDER
-    )
-
-    zero_multitarget_output_settings(
-        ${Zero_OptionalTarget_ZeroLauncher}
-        ${Zero_OptionalTarget_ZeroLauncherSharedLibrary}
-        CONFIGS ${supported_configs}
-        BASEPATH "${zero_build_out}"
-        PLATFORM ${platform}
-        CONFIG ${configuration}
-        BITS ${bit}
-        TOOLSET ${CMAKE_VS_PLATFORM_TOOLSET}
-        PRECOMPILED_HEADER_NAME "Precompiled.hpp"
-        PRECOMPILED_SOURCE_NAME "Precompiled.cpp"
-        TARGET_SUBFOLDER ZeroLauncher
-    )
-
-    zero_multitarget_output_settings(
-        ${Zero_OptionalTarget_BrowserSubProcess}
-        CONFIGS ${supported_configs}
-        BASEPATH ${zero_build_out}
-        PLATFORM ${platform}
-        CONFIG ${configuration}
-        BITS ${bit}
-        TOOLSET ${CMAKE_VS_PLATFORM_TOOLSET}
-        PRECOMPILED_HEADER_NAME ""
-        PRECOMPILED_SOURCE_NAME ""
-        TARGET_SUBFOLDER
-    )
-    
-endif()
-
-################################################################################
 # set flags and definitions
 ################################################################################
 

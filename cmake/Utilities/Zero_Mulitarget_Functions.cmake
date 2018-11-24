@@ -71,7 +71,10 @@ function(zero_multitarget_output_settings)
         )
         # if we were passed values for the precompiled headers, set the target precompiled headers
         if (NOT ("${PARSED_PRECOMPILED_HEADER_NAME}" STREQUAL ""))
-            zero_target_precompiled_headers(${target} "${intOutputDirectory}" ${PARSED_PRECOMPILED_HEADER_NAME} ${PARSED_PRECOMPILED_SOURCE_NAME} "${PARSED_TARGET_SUBFOLDER}" ${PARSED_IGNORE_TARGET})
+        
+            if (${CMAKE_CXX_COMPILER_ID} STREQUAL MSVC OR (CMAKE_GENERATOR_TOOLSET STREQUAL "LLVM-vs2014"))
+                zero_target_precompiled_headers(${target} "${intOutputDirectory}" ${PARSED_PRECOMPILED_HEADER_NAME} ${PARSED_PRECOMPILED_SOURCE_NAME})
+            endif()
         else()
             message("<><><> Skipped precompiled for target: ${target}\n")
         endif()

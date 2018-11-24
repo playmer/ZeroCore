@@ -157,4 +157,17 @@ target_link_libraries(Zilch
                     ${VLD_LIBRARIES}
 )
 
+zero_multitarget_output_settings(
+    Zilch 
+    CONFIGS ${supported_configs}
+    BASEPATH ${zero_build_out}
+    PLATFORM ${platform}
+    CONFIG ${configuration}
+    BITS ${bit}
+    TOOLSET ${CMAKE_VS_PLATFORM_TOOLSET}
+    PRECOMPILED_HEADER_NAME "Zilch.hpp"
+    PRECOMPILED_SOURCE_NAME "Zilch.cpp"
+    TARGET_SUBFOLDER "Project"
+)
+
 zero_source_group(${CMAKE_CURRENT_LIST_DIR} Zilch "")

@@ -228,9 +228,9 @@ set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 add_subdirectory(External)
 
 # zero source and related projects
-add_subdirectory(Extensions)
-add_subdirectory(Systems)
 add_subdirectory(ZeroLibraries)
+add_subdirectory(Systems)
+add_subdirectory(Extensions)
 add_subdirectory(Projects)
 
 if (generate_with_unit_tests)

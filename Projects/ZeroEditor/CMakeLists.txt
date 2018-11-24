@@ -70,12 +70,25 @@ target_link_libraries(ZeroEditor
 )
 
 if(NOT use_spirv_shared_library)
-target_link_libraries(ZeroEditor
-                      PUBLIC
-                      SPIRV-Tools
-                      SPIRV-Tools-opt
-                      )
+    target_link_libraries(ZeroEditor
+                        PUBLIC
+                        SPIRV-Tools
+                        SPIRV-Tools-opt
+                        )
 endif()
+
+zero_multitarget_output_settings(
+    ZeroEditor
+    CONFIGS ${supported_configs}
+    BASEPATH ${zero_build_out}
+    PLATFORM ${platform}
+    CONFIG ${configuration}
+    BITS ${bit}
+    TOOLSET ${CMAKE_VS_PLATFORM_TOOLSET}
+    PRECOMPILED_HEADER_NAME "Precompiled.hpp"
+    PRECOMPILED_SOURCE_NAME "Precompiled.cpp"
+    TARGET_SUBFOLDER
+)
 
 add_dependencies(ZeroEditor
     BrowserSubProcess

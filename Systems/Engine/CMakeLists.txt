@@ -227,6 +227,19 @@ target_link_libraries(Engine
     Zilch
 )  
 
+zero_multitarget_output_settings(
+    Engine
+    CONFIGS ${supported_configs}
+    BASEPATH ${zero_build_out}
+    PLATFORM ${platform}
+    CONFIG ${configuration}
+    BITS ${bit}
+    TOOLSET ${CMAKE_VS_PLATFORM_TOOLSET}
+    PRECOMPILED_HEADER_NAME "Precompiled.hpp"
+    PRECOMPILED_SOURCE_NAME "Precompiled.cpp"
+    TARGET_SUBFOLDER
+)
+
 add_custom_command(
     TARGET Engine PRE_BUILD    
     COMMAND ${CMAKE_COMMAND} 

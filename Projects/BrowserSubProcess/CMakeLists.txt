@@ -26,6 +26,19 @@ target_link_libraries(BrowserSubProcess
                       ${CEFStatic}
 )
 
+zero_multitarget_output_settings(
+    BrowserSubProcess
+    CONFIGS ${supported_configs}
+    BASEPATH ${zero_build_out}
+    PLATFORM ${platform}
+    CONFIG ${configuration}
+    BITS ${bit}
+    TOOLSET ${CMAKE_VS_PLATFORM_TOOLSET}
+    PRECOMPILED_HEADER_NAME ""
+    PRECOMPILED_SOURCE_NAME ""
+    TARGET_SUBFOLDER
+)
+
 #zero_subfolder_source_group(${zero_core_path} Projects BrowserSubProcess "")
 zero_source_group(${CMAKE_CURRENT_LIST_DIR} BrowserSubProcess "")
 #zero_subfolder_source_group_ignore_target_folder(${zero_core_path} Projects BrowserSubProcess "${zero_core_path}/Projects")

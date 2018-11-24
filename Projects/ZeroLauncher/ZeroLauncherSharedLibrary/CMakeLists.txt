@@ -94,6 +94,20 @@ target_link_libraries(ZeroLauncherSharedLibrary
                       CodeTranslator
 ) 
 
+
+zero_multitarget_output_settings(
+    ZeroLauncherSharedLibrary
+    CONFIGS ${supported_configs}
+    BASEPATH "${zero_build_out}"
+    PLATFORM ${platform}
+    CONFIG ${configuration}
+    BITS ${bit}
+    TOOLSET ${CMAKE_VS_PLATFORM_TOOLSET}
+    PRECOMPILED_HEADER_NAME "Precompiled.hpp"
+    PRECOMPILED_SOURCE_NAME "Precompiled.cpp"
+    TARGET_SUBFOLDER ZeroLauncher
+)
+
 add_dependencies(ZeroLauncherSharedLibrary
     BrowserSubProcess
 )

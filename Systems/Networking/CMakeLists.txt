@@ -78,4 +78,17 @@ target_link_libraries(Networking
     Geometry
 ) 
 
+zero_multitarget_output_settings(
+    Networking
+    CONFIGS ${supported_configs}
+    BASEPATH ${zero_build_out}
+    PLATFORM ${platform}
+    CONFIG ${configuration}
+    BITS ${bit}
+    TOOLSET ${CMAKE_VS_PLATFORM_TOOLSET}
+    PRECOMPILED_HEADER_NAME "Precompiled.hpp"
+    PRECOMPILED_SOURCE_NAME "Precompiled.cpp"
+    TARGET_SUBFOLDER
+)
+
 zero_source_group(${CMAKE_CURRENT_LIST_DIR} Networking "")

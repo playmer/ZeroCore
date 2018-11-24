@@ -107,31 +107,6 @@ if(NOT ${ZERO_NO_SYSTEMS})
         LIBRARY_DIRECTORY ${zero_library_dir}
         RUNTIME_DIRECTORY ${zero_binary_dir}
     )
-    ################################################################################
-    # Specify any additional target options such as pdb locations
-    ################################################################################
-
-    if (${CMAKE_CXX_COMPILER_ID} STREQUAL MSVC OR (CMAKE_GENERATOR_TOOLSET STREQUAL "LLVM-vs2014"))
-        zero_multitarget_output_settings(
-            ${Zero_OptionalTarget_Content}
-            ${Zero_OptionalTarget_Engine}
-            ${Zero_OptionalTarget_Graphics}
-            ${Zero_OptionalTarget_Physics}
-            ${Zero_OptionalTarget_Sound}
-            ${Zero_OptionalTarget_Startup}
-            ${Zero_OptionalTarget_ZilchScript}
-            ${Zero_OptionalTarget_Networking}
-            CONFIGS ${supported_configs}
-            BASEPATH ${zero_build_out}
-            PLATFORM ${platform}
-            CONFIG ${configuration}
-            BITS ${bit}
-            TOOLSET ${CMAKE_VS_PLATFORM_TOOLSET}
-            PRECOMPILED_HEADER_NAME "Precompiled.hpp"
-            PRECOMPILED_SOURCE_NAME "Precompiled.cpp"
-            TARGET_SUBFOLDER
-        )
-    endif()
 
     ################################################################################
     # set flags and definitions
