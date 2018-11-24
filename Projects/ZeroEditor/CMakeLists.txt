@@ -152,7 +152,7 @@ endif()
 #function(create_build_info aTarget aSourceDir aBuildOutDir aOutputLocation)
 create_build_info(
     ZeroEditor
-    ${CurrentDirectory}/ZeroEditor
+    ${CMAKE_CURRENT_LIST_DIR}
     ${zero_core_path}
     ${zero_binary_dir}
     ${zero_binary_dir}

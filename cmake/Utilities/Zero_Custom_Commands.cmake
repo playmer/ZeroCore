@@ -206,7 +206,7 @@ function(launcher_post_build aTarget aZeroCoreDirectory aProjectDirectory aBuild
 
     create_build_info(
         ${aTarget}
-        ${CurrentDirectory}/${aTarget}/${aTarget}
+        ${CurrentDirectory}
         ${aZeroCoreDirectory}
         ${aBuildOutputDirectory}
         ${aBuildOutputDirectory}
