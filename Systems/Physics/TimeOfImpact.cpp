@@ -33,7 +33,7 @@ struct InvokeTimeOfImpactInit
   InvokeTimeOfImpactInit() {InitTimeOfImpactLookup();}
 };
 
-static const real sTolerance = 0.001;
+static const real sTolerance = 0.001f;
 
 void GetGeometryData(Collider* collider, GeometryData* data, bool linearSweep)
 {

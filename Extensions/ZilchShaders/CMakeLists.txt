@@ -5,6 +5,10 @@
 # commented out since we have to ignore some files in this folder at the moment
 #include(${CMAKE_CURRENT_LIST_DIR}/Generated.cmake)
 
+add_library(ZilchShaders "")
+
+set_target_properties(ZilchShaders PROPERTIES FOLDER "Extensions")
+
 target_sources(ZilchShaders
   PRIVATE
     ${CMAKE_CURRENT_LIST_DIR}/ArithmeticInstructions.cpp
@@ -94,3 +98,41 @@ target_sources(ZilchShaders
     ${CMAKE_CURRENT_LIST_DIR}/ZilchSpirVFrontEndValidation.hpp
     ${CMAKE_CURRENT_LIST_DIR}/ZilchSpirVSettings.hpp
 )
+
+target_include_directories(ZilchShaders
+PUBLIC 
+    ${CMAKE_CURRENT_LIST_DIR}/../
+    ${CMAKE_CURRENT_LIST_DIR}/../SpirV/SPIRV-Cross
+    ${CMAKE_CURRENT_LIST_DIR}/../SpirV/SpirVFiles
+    ${CMAKE_CURRENT_LIST_DIR}/../SpirV/SpirVFiles/external
+    ${CMAKE_CURRENT_LIST_DIR}/../SpirV/SpirVFiles/external/SPIRV-Headers/include
+    ${CMAKE_CURRENT_LIST_DIR}/../SpirV/SpirVFiles/include
+    ${CMAKE_CURRENT_LIST_DIR}/../SpirV/SpirVFiles/include/spirv-tools
+    ${CMAKE_CURRENT_LIST_DIR}/../SpirV/SpirVFiles/build
+    ${CMAKE_CURRENT_LIST_DIR}/../SpirV/SpirVFiles/tools
+    ${CMAKE_CURRENT_LIST_DIR}/../SpirV/SpirVFiles/source
+)
+
+target_link_libraries(ZilchShaders
+                PRIVATE
+                Common
+                Geometry
+                Zilch
+                SPIRV-Cross
+                SPIRV-Tools-opt
+) 
+
+zero_multitarget_output_settings(
+    ZilchShaders
+    CONFIGS ${supported_configs}
+    BASEPATH ${zero_build_out}
+    PLATFORM ${platform}
+    CONFIG ${configuration}
+    BITS ${bit}
+    TOOLSET ${CMAKE_VS_PLATFORM_TOOLSET}
+    PRECOMPILED_HEADER_NAME "Precompiled.hpp"
+    PRECOMPILED_SOURCE_NAME "Precompiled.cpp"
+    TARGET_SUBFOLDER
+)
+
+zero_source_group(${CMAKE_CURRENT_LIST_DIR} ZilchShaders "")

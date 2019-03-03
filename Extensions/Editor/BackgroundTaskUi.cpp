@@ -162,7 +162,7 @@ void BackgroundTaskButton::OnUpdate(UpdateEvent* e)
     // Convert a sin wave to 0-1 to be used as an interpolant between colors
     float t = Math::Sin(e->TimePassed * 5.0f) * 0.5f + 0.5f;
     // Don't go all the way green. Just looks better
-    t *= 0.7;
+    t *= 0.7f;
     color = Math::Lerp(Vec4(TaskButtonUi::IconColor), Vec4(TaskButtonUi::IconFlash), t);
   }
 

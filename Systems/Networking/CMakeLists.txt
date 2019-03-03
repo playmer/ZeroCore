@@ -2,8 +2,9 @@
 # Generated using Joshua T. Fisher's 'CMake Builder'.
 # Link: https://github.com/playmer/CmakeBuilder 
 ################################################################################
-# unable to use generated list due to commented out file
-#include(${CMAKE_CURRENT_LIST_DIR}/Generated.cmake)
+add_library(Networking "")
+
+set_target_properties(Networking PROPERTIES FOLDER "Systems")
 
 target_sources(Networking
   PRIVATE
@@ -64,3 +65,30 @@ target_sources(Networking
     ${CMAKE_CURRENT_LIST_DIR}/WebRequester.hpp
     ${CMAKE_CURRENT_LIST_DIR}/WebServer.hpp
 )
+
+target_include_directories(Networking 
+    PUBLIC 
+        ${CMAKE_CURRENT_LIST_DIR}/../Networking
+        ${CMAKE_CURRENT_LIST_DIR}/../
+)
+
+target_link_libraries(Networking
+    PUBLIC
+    Common
+    Geometry
+) 
+
+zero_multitarget_output_settings(
+    Networking
+    CONFIGS ${supported_configs}
+    BASEPATH ${zero_build_out}
+    PLATFORM ${platform}
+    CONFIG ${configuration}
+    BITS ${bit}
+    TOOLSET ${CMAKE_VS_PLATFORM_TOOLSET}
+    PRECOMPILED_HEADER_NAME "Precompiled.hpp"
+    PRECOMPILED_SOURCE_NAME "Precompiled.cpp"
+    TARGET_SUBFOLDER
+)
+
+zero_source_group(${CMAKE_CURRENT_LIST_DIR} Networking "")

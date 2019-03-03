@@ -126,4 +126,4 @@ endif()
 ################################################################################
 # Group source into folders
 ################################################################################
-zero_subfolder_source_group(${zero_core_path} Extensions/SpirV SPIRV-Cross "")
+zero_source_group(${CMAKE_CURRENT_LIST_DIR} SPIRV-Cross "")

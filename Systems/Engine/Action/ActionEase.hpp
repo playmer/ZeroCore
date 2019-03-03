@@ -300,7 +300,7 @@ struct Back
     if (t >= 1.0f)
       return 1.0f;
 
-    float scale = 1.70158;  // original value defined by Penner
+    float scale = 1.70158f;  // original value defined by Penner
     return t * t * ((scale + 1.0f) * t - scale);
   }
 
@@ -311,7 +311,7 @@ struct Back
     if (t >= 1.0f)
       return 1.0f;
 
-    float scale = 1.70158;  // original value defined by Penner
+    float scale = 1.70158f;  // original value defined by Penner
     t -= 1.0f;
     return t * t * ((scale + 1.0f) * t + scale) + 1.0f;
   }

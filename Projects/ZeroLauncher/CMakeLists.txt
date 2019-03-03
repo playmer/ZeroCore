@@ -2,8 +2,15 @@
 # Add any files that need to be manually added in this file.
 # Link: https://github.com/playmer/CmakeBuilder 
 ################################################################################
-#Adds generated list, do not remove line unless you are sure you want to ignore the generated file.
-include(${CMAKE_CURRENT_LIST_DIR}/Generated.cmake)
-target_sources(ZeroLauncher
-PRIVATE
-)
+if(${ZERO_BUILD_ZeroLauncher})
+    add_subdirectory(ZeroLauncher)
+    set(Zero_OptionalTarget_ZeroLauncher ZeroLauncher PARENT_SCOPE)
+endif()
+
+if(${ZERO_BUILD_ZeroLauncherSharedLibrary})
+    add_subdirectory(ZeroLauncherSharedLibrary)
+    set(Zero_OptionalTarget_ZeroLauncherSharedLibrary ZeroLauncherSharedLibrary PARENT_SCOPE)
+endif()
+
+
+

@@ -2,8 +2,106 @@
 # Generated using Joshua T. Fisher's 'CMake Builder'.
 # Link: https://github.com/playmer/CmakeBuilder 
 ################################################################################
-include(${CMAKE_CURRENT_LIST_DIR}/Generated.cmake)
+add_library(Geometry "")
+
+set_target_properties(Geometry PROPERTIES FOLDER "ZeroLibraries")
 
 target_sources(Geometry
-    PRIVATE
+PRIVATE
+  ${CMAKE_CURRENT_LIST_DIR}/Aabb.cpp
+  ${CMAKE_CURRENT_LIST_DIR}/Aabb.hpp
+  ${CMAKE_CURRENT_LIST_DIR}/Clipper.cpp
+  ${CMAKE_CURRENT_LIST_DIR}/Clipper.hpp
+  ${CMAKE_CURRENT_LIST_DIR}/ClosestPoint.cpp
+  ${CMAKE_CURRENT_LIST_DIR}/ConvexMeshDecomposition.cpp
+  ${CMAKE_CURRENT_LIST_DIR}/ConvexMeshDecomposition.hpp
+  ${CMAKE_CURRENT_LIST_DIR}/ConvexMeshShape.cpp
+  ${CMAKE_CURRENT_LIST_DIR}/ConvexMeshShape.hpp
+  ${CMAKE_CURRENT_LIST_DIR}/DebugDraw.cpp
+  ${CMAKE_CURRENT_LIST_DIR}/DebugDraw.hpp
+  ${CMAKE_CURRENT_LIST_DIR}/DebugDrawStack.cpp
+  ${CMAKE_CURRENT_LIST_DIR}/DebugDrawStack.hpp
+  ${CMAKE_CURRENT_LIST_DIR}/DebugPrimitives.inl
+  ${CMAKE_CURRENT_LIST_DIR}/Epa.cpp
+  ${CMAKE_CURRENT_LIST_DIR}/Epa.hpp
+  ${CMAKE_CURRENT_LIST_DIR}/ExtendedCollision.cpp
+  ${CMAKE_CURRENT_LIST_DIR}/ExtendedCollision.hpp
+  ${CMAKE_CURRENT_LIST_DIR}/ExtendedIntersection.cpp
+  ${CMAKE_CURRENT_LIST_DIR}/ExtendedIntersection.hpp
+  ${CMAKE_CURRENT_LIST_DIR}/Frustum.cpp
+  ${CMAKE_CURRENT_LIST_DIR}/Frustum.hpp
+  ${CMAKE_CURRENT_LIST_DIR}/FrustumIntersection.cpp
+  ${CMAKE_CURRENT_LIST_DIR}/GeodesicSphere.cpp
+  ${CMAKE_CURRENT_LIST_DIR}/GeodesicSphere.hpp
+  ${CMAKE_CURRENT_LIST_DIR}/Geometry.cpp
+  ${CMAKE_CURRENT_LIST_DIR}/Geometry.hpp
+  ${CMAKE_CURRENT_LIST_DIR}/GeometryStandard.cpp
+  ${CMAKE_CURRENT_LIST_DIR}/GeometryStandard.hpp
+  ${CMAKE_CURRENT_LIST_DIR}/Gjk.cpp
+  ${CMAKE_CURRENT_LIST_DIR}/Gjk.hpp
+  ${CMAKE_CURRENT_LIST_DIR}/Hull2D.cpp
+  ${CMAKE_CURRENT_LIST_DIR}/Hull2D.hpp
+  ${CMAKE_CURRENT_LIST_DIR}/IndexPool.hpp
+  ${CMAKE_CURRENT_LIST_DIR}/Intersection.cpp
+  ${CMAKE_CURRENT_LIST_DIR}/Intersection.hpp
+  ${CMAKE_CURRENT_LIST_DIR}/Intersection2D.cpp
+  ${CMAKE_CURRENT_LIST_DIR}/LineTests.cpp
+  ${CMAKE_CURRENT_LIST_DIR}/Mpr.cpp
+  ${CMAKE_CURRENT_LIST_DIR}/Mpr.hpp
+  ${CMAKE_CURRENT_LIST_DIR}/ObbIntersection.cpp
+  ${CMAKE_CURRENT_LIST_DIR}/Plane.cpp
+  ${CMAKE_CURRENT_LIST_DIR}/Plane.hpp
+  ${CMAKE_CURRENT_LIST_DIR}/PointQueries.cpp
+  ${CMAKE_CURRENT_LIST_DIR}/Polygon.cpp
+  ${CMAKE_CURRENT_LIST_DIR}/Polygon.hpp
+  ${CMAKE_CURRENT_LIST_DIR}/Precompiled.cpp
+  ${CMAKE_CURRENT_LIST_DIR}/Precompiled.hpp
+  ${CMAKE_CURRENT_LIST_DIR}/QuickHull3D.cpp
+  ${CMAKE_CURRENT_LIST_DIR}/QuickHull3D.hpp
+  ${CMAKE_CURRENT_LIST_DIR}/RayTests.cpp
+  ${CMAKE_CURRENT_LIST_DIR}/SegmentTests.cpp
+  ${CMAKE_CURRENT_LIST_DIR}/Shape2D.cpp
+  ${CMAKE_CURRENT_LIST_DIR}/Shape2D.hpp
+  ${CMAKE_CURRENT_LIST_DIR}/ShapeHelpers.cpp
+  ${CMAKE_CURRENT_LIST_DIR}/ShapeHelpers.hpp
+  ${CMAKE_CURRENT_LIST_DIR}/Shapes.cpp
+  ${CMAKE_CURRENT_LIST_DIR}/Shapes.hpp
+  ${CMAKE_CURRENT_LIST_DIR}/Simplex.cpp
+  ${CMAKE_CURRENT_LIST_DIR}/Simplex.hpp
+  ${CMAKE_CURRENT_LIST_DIR}/Solids.hpp
+  ${CMAKE_CURRENT_LIST_DIR}/Sphere.cpp
+  ${CMAKE_CURRENT_LIST_DIR}/Sphere.hpp
+  ${CMAKE_CURRENT_LIST_DIR}/ToString.cpp
+  ${CMAKE_CURRENT_LIST_DIR}/ToString.hpp
+  ${CMAKE_CURRENT_LIST_DIR}/TrapezoidMap.cpp
+  ${CMAKE_CURRENT_LIST_DIR}/TrapezoidMap.hpp
+  ${CMAKE_CURRENT_LIST_DIR}/Triangulator.cpp
+  ${CMAKE_CURRENT_LIST_DIR}/Triangulator.hpp
 )
+
+target_include_directories(Geometry
+PUBLIC
+    ${CMAKE_CURRENT_LIST_DIR}
+    ${CMAKE_CURRENT_LIST_DIR}/../
+)
+
+target_link_libraries(Geometry
+                    PUBLIC
+                    Common
+                    Zilch
+) 
+
+zero_multitarget_output_settings(
+    Geometry
+    CONFIGS ${supported_configs}
+    BASEPATH ${zero_build_out}
+    PLATFORM ${platform}
+    CONFIG ${configuration}
+    BITS ${bit}
+    TOOLSET ${CMAKE_VS_PLATFORM_TOOLSET}
+    PRECOMPILED_HEADER_NAME "Precompiled.hpp"
+    PRECOMPILED_SOURCE_NAME "Precompiled.cpp"
+    TARGET_SUBFOLDER
+)
+
+zero_source_group(${CMAKE_CURRENT_LIST_DIR} Geometry "")
